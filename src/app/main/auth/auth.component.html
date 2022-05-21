@@ -1,0 +1,28 @@
+<form [formGroup]="loginForm">
+	<div class="box-input" [ngClass]="{ 'is-invalid': submitted && loginForm.controls.login.errors }">
+		<label>CPF ou CNPJ</label>
+		<input data-testid="email"
+			   type="text"
+			   formControlName="login"
+			   name="login"
+			   placeholder="Digite aqui"
+			   (ngModelChange)="resetErrors()"
+			   tabindex="1"
+		/>
+	</div>
+	<div class="box-input" [ngClass]="{ 'is-invalid': submitted && loginForm.controls.password.errors}">
+		<label>Password</label>
+		<input data-testid="pwd"
+			   type="password"
+			   formControlName="password"
+			   name="password" #inputPass
+			   placeholder="Digite aqui"
+			   (ngModelChange)="resetErrors()"
+			   tabindex="2"
+		/>
+		<span class="material-icons" [class.active]="inputPass.type == 'text'" (click)="inputPass.type == 'password'? inputPass.type = 'text': inputPass.type = 'password'">
+			{{ inputPass.type == 'password' ? 'visibility_off' : 'visibility' }}
+		</span>
+	</div>
+  <button>Entrar</button>
+</form>
