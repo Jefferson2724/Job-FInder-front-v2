@@ -4,8 +4,11 @@
             <div class="" *ngIf="login">
                 <app-auth (openRegister)="openRegisterUser($event)" (openForgotPassw)="openRecoverPassw($event)"></app-auth>
             </div>
-            <div class="" *ngIf="recoverPassword">recover</div>
-            <div class="" *ngIf="register">register</div>
+            <div class="" *ngIf="recoverPassword">
+            </div>
+            <div class="" *ngIf="register">
+                <app-register (openAuth)="openLogin($event)"></app-register>
+            </div>
         </div>
     </div>
 </div>
