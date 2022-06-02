@@ -1,0 +1,15 @@
+.box-input {
+    display: flex;
+    flex-direction: column;
+    text-align:left;
+    margin-bottom: 4px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 90%;
+}
