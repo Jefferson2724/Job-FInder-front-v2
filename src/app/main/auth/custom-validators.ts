@@ -50,7 +50,7 @@ export class CustomValidators {
 	}
 
 	private static validateLogin(login: string) {
-		return constants.PHONE_BASIC_REGEX.test(login) || CustomValidators.validateEmail(login);
+		return constants.PHONE_BASIC_REGEX.test(login);
 	}
 
 	static usernameValidator(control: AbstractControl): ValidationErrors | null {

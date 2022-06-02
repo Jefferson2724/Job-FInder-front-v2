@@ -12,17 +12,23 @@
 	</div>
 	<div class="box-input" [ngClass]="{ 'is-invalid': submitted && loginForm.controls.password.errors}">
 		<label>Password</label>
-		<input data-testid="pwd"
-			   type="password"
-			   formControlName="password"
-			   name="password" #inputPass
-			   placeholder="Digite aqui"
-			   (ngModelChange)="resetErrors()"
-			   tabindex="2"
-		/>
-		<span class="material-icons" [class.active]="inputPass.type == 'text'" (click)="inputPass.type == 'password'? inputPass.type = 'text': inputPass.type = 'password'">
-			{{ inputPass.type == 'password' ? 'visibility_off' : 'visibility' }}
-		</span>
+		<div class="password-div">
+			<input data-testid="pwd"
+				type="password"
+				formControlName="password"
+				name="password" #inputPass
+				placeholder="Digite aqui"
+				(ngModelChange)="resetErrors()"
+				tabindex="2"
+			/>
+			<span class="material-icons" [class.active]="inputPass.type == 'text'" (click)="inputPass.type == 'password'? inputPass.type = 'text': inputPass.type = 'password'">
+				{{ inputPass.type == 'password' ? 'visibility_off' : 'visibility' }}
+			</span>
+		</div>
 	</div>
-  <button>Entrar</button>
+	<div class="buttons">
+		<button class="btn btn-primary" (click)="enter()">Entrar</button>
+		<button class="btn btn-secudary" (click)="openRegisterClick()">Cadastre-se</button>
+		<button class="btn btn-secudary" (click)="openForgotPassword()">Esqueci minha senha</button>
+	</div>	
 </form>
