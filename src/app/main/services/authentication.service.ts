@@ -36,4 +36,23 @@ export class AuthenticationService {
 
       return responseRegister.asObservable();
     }
+
+    login(data){
+      debugger;
+      let responseRegister: BehaviorSubject<any> = new BehaviorSubject(undefined);
+
+      this.httpClient.post<any>(`${this.url}/login`, data, {observe: 'response'}).subscribe(
+          response => {
+              responseRegister.next(response.body);
+
+              },
+              error => {
+                this.messageService.showSnackbar('Erro no login!', 'snackbar-error');
+
+                responseRegister.next(undefined);
+              }
+          );
+
+      return responseRegister.asObservable();
+    }
 }
