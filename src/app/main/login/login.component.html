@@ -1,0 +1,14 @@
+<div class="container-main-login">
+    <div class="content-login">
+        <div class="box-login">
+            <div class="" *ngIf="login">
+                <app-auth (openRegister)="openRegisterUser($event)" (openForgotPassw)="openRecoverPassw($event)"></app-auth>
+            </div>
+            <div class="" *ngIf="recoverPassword">
+            </div>
+            <div class="" *ngIf="register">
+                <app-register (openAuth)="openLogin($event)"></app-register>
+            </div>
+        </div>
+    </div>
+</div>
