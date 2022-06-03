@@ -89,6 +89,8 @@ export class RegisterComponent implements OnInit {
 
       let data = this.identification == "student" ? this.isStudent(form) : this.isCompany(form);
       this.authenticationService.register(data);
+
+      this.backAuth();
   }
 
   isStudent(form) {
