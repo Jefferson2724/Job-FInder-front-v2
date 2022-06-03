@@ -85,29 +85,29 @@ export class RegisterComponent implements OnInit {
           return;
       }
 
-      let data = this.identification == "student" ? this.isStudent(form) : this.isCompany(form);
-      debugger;
+      this.identification == "student" ? this.isStudent(form) : this.isCompany(form);
+      
   }
 
   isStudent(form) {
-      for(let algo in form.value) {
-          switch(algo){
+      for(let field in form.value) {
+          switch(field){
             case 'identity':
-              this.dataStudent['cpf'] = form.value[algo];
+              this.dataStudent['cpf'] = form.value[field];
               break;
             case 'avaibilityForm':
-              this.dataStudent['availability'] = form.value[algo];
+              this.dataStudent['availability'] = form.value[field];
               break;
             case 'organization':
-              this.dataStudent['organization'] = form.value[algo];
+              this.dataStudent['organization'] = form.value[field];
               break;
             case 'function':
-              this.dataStudent['period'] = form.value[algo];
+              this.dataStudent['period'] = form.value[field];
               break;
             case 'confirmPassword':
               break;
             default:
-              this.dataStudent[algo] = form.value[algo];
+              this.dataStudent[field] = form.value[field];
               break;
           }
       }
@@ -116,16 +116,16 @@ export class RegisterComponent implements OnInit {
   }
 
   isCompany(form) { 
-      for(let algo in form.value) {
-        switch(algo){
+      for(let field in form.value) {
+        switch(field){
             case 'identity':
-                this.dataCompany['cnpj'] = form.value[algo];
+                this.dataCompany['cnpj'] = form.value[field];
                 break;
             case 'avaibilityForm':
-                this.dataCompany['availability'] = form.value[algo];
+                this.dataCompany['availability'] = form.value[field];
                 break;
             case 'organization':
-                this.dataCompany['office'] = form.value[algo];
+                this.dataCompany['office'] = form.value[field];
                 break;
             case 'period':
                 break;
@@ -136,7 +136,7 @@ export class RegisterComponent implements OnInit {
             case 'confirmPassword':
                 break;
             default:
-                this.dataCompany[algo] = form.value[algo];
+                this.dataCompany[field] = form.value[field];
                 break;
           }
       }
