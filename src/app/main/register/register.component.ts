@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../auth/custom-validators';
 import { Company } from '../models/Company.model';
 import { Student } from '../models/student.model';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-register',
@@ -21,6 +22,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
       private formBuilder: FormBuilder,
+      private authenticationService: AuthenticationService,
   ) { }
 
   ngOnInit() {
@@ -85,8 +87,8 @@ export class RegisterComponent implements OnInit {
           return;
       }
 
-      this.identification == "student" ? this.isStudent(form) : this.isCompany(form);
-      
+      let data = this.identification == "student" ? this.isStudent(form) : this.isCompany(form);
+      this.authenticationService.register(data);
   }
 
   isStudent(form) {
@@ -141,6 +143,6 @@ export class RegisterComponent implements OnInit {
           }
       }
 
-      return this.dataStudent;
+      return this.dataCompany;
   }
 } 

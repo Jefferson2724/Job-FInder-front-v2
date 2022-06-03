@@ -1,0 +1,6 @@
+<span class="snackbar-message" #snackbar>
+	<div class="snackbar-icon-text">
+		<mat-icon>{{ (data.type === 'snackbar-error') ? 'close' : (data.type === 'snackbar-warning') ? 'error_outline' : 'done' }}</mat-icon>
+		<div class="snackbar-text">{{ data.message }}</div>
+	</div><i class="material-icons snackbar-close" (click)="onCloseBtnClick()">close</i>
+</span>
