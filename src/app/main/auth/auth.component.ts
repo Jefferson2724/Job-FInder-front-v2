@@ -43,12 +43,10 @@ export class AuthComponent implements OnInit {
   }
 
   openRegisterClick() {
-      debugger;
       this.openRegister.emit("true");
   }
 
   openForgotPassword() {
-      debugger;
       this.openForgotPassw.emit("true");
   }
 

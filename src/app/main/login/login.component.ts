@@ -15,14 +15,12 @@ export class LoginComponent implements OnInit {
   }
 
   openRegisterUser(){
-      debugger;
       this.login = false;
       this.recoverPassword = false;
       this.register = true;
   }
 
   openRecoverPassw(){
-      debugger;
       this.login = false;
       this.recoverPassword = true;
       this.register = false;
