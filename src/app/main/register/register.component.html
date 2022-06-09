@@ -14,6 +14,10 @@
         <form class="form" [formGroup]="registerForm">
             <div class="form-1">
                 <mat-form-field class="" appearance="fill">
+                  <mat-label>Nome</mat-label>
+                  <input matInput type="text" formControlName="name" placeholder="Digite seu Nome Completo">
+                </mat-form-field>
+                <mat-form-field class="" appearance="fill">
                   <mat-label>Login</mat-label>
                   <input matInput type="text" formControlName="login" placeholder="Digite seu Login">
                 </mat-form-field>

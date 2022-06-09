@@ -1,4 +1,5 @@
 export class Student {
+    name: string;
     login: string;
     email: string;
     phone: number;

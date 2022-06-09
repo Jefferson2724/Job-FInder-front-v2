@@ -14,6 +14,7 @@ import { AuthenticationService } from './main/services/authentication.service';
 import { MessageService } from './main/services/message.service';
 import { MessageSnackbarComponent } from './main/message-snackbar/message-snackbar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [			
@@ -37,7 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     MatSnackBarModule
   ],
-  providers: [AuthenticationService, MessageService, MessageSnackbarComponent],
+  providers: [AuthenticationService, MessageService, CookieService, MessageSnackbarComponent],
   entryComponents: [MessageSnackbarComponent],
   bootstrap: [AppComponent]
 })

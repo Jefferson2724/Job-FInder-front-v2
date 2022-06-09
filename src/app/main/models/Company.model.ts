@@ -1,4 +1,5 @@
 export class Company {
+    name: string;
     login: string;
     email: string;
     phone: number;
@@ -6,7 +7,8 @@ export class Company {
     state: string;
     nationality: string;
     availability: string; //-> avaibilityForm
-    office: string; //-> organization
+    company: string;
+    office: string; //-> organization / Cargo
     password: number;
 }
 
