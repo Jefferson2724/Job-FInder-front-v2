@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject } from 'rxjs';
@@ -20,14 +20,21 @@ export class AuthenticationService {
     
     register(data){
       let responseRegister: BehaviorSubject<any> = new BehaviorSubject(undefined);
-
-      this.httpClient.post<any>(`${this.url}/register`, data, {observe: 'response'}).subscribe(
+      let header = new HttpHeaders();
+      debugger;
+      header = header.set("Access-Control-Allow-Origin", "*");
+      /*header = header.set("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS")
+      header = header.set("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With")
+*/
+      this.httpClient.post<any>(`${this.url}/createUser`, data, {observe: 'response', headers: header}).subscribe(
           response => {
+            debugger;
               responseRegister.next(response.body);
 
                 this.messageService.showSnackbar('Conta registrada com sucesso!', 'snackbar-success');
           },
           error => {
+            debugger;
             this.messageService.showSnackbar('Error, conta não criada !', 'snackbar-error');
 
             responseRegister.next(undefined);
@@ -39,8 +46,11 @@ export class AuthenticationService {
 
     login(data){
       let responseRegister: BehaviorSubject<any> = new BehaviorSubject(undefined);
+      let header = new HttpHeaders();
+      
+      header = header.append("Access-Control-Allow-Origin", "*");
 
-      this.httpClient.post<any>(`${this.url}/login`, data, {observe: 'response'}).subscribe(
+      this.httpClient.post<any>(`${this.url}/userLogin`, data, {observe: 'response', headers: header}).subscribe(
           response => {
               this.setTokenCookie(response.body.token);
               responseRegister.next(response.body);
