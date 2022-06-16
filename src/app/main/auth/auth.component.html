@@ -1,7 +1,7 @@
 <form [formGroup]="loginForm">
 	<div class="box-input" [ngClass]="{ 'is-invalid': submitted && loginForm.controls.login.errors }">
-		<label>CPF ou CNPJ</label>
-		<input data-testid="email"
+		<label>Login</label>
+		<input data-testid="login"
 			   type="text"
 			   formControlName="login"
 			   name="login"

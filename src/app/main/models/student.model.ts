@@ -3,7 +3,7 @@ export class Student {
     login: string;
     email: string;
     phone: number;
-    cpf: number; //-> identity
+    identity: number; //-> identity
     age: number;
     state: string;
     nationality: string;

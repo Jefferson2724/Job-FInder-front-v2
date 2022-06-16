@@ -4,7 +4,102 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-
 .material-icons {
     cursor: pointer;
+}
+
+.snackbar-message {
+    display: flex;
+    align-items: flex-start;
+    word-break: break-word;
+    justify-content: space-between;
+}
+
+.snackbar-success,
+.snackbar-warning {
+    color: #474747;
+}
+
+.snackbar-warning{
+    background-color: #f9dd82;
+}
+
+.snackbar-error{
+    background-color: #FC4949;
+    color: #fff;
+}
+
+.snackbar-success{
+    background-color: #94d8b4;
+}
+
+.successSnackAction {
+    margin-bottom: auto;
+    cursor: pointer;
+    margin-left: auto;
+    min-width: 120px;
+    padding-left: 56px;
+}
+
+.snackbar-error .mat-icon,
+.snackbar-warning .mat-icon,
+.snackbar-success .mat-icon{
+    margin-right: 15px;
+    border-radius: 100%;
+    padding: 2px;
+}
+
+.snackbar-error .mat-icon {
+    background-color: #FF7474;
+}
+
+.snackbar-success .mat-icon {
+    background-color: #4FC587;
+}
+
+.snackbar-warning .mat-icon {
+    background-color: #FFC300;
+}
+
+.snackbar-icon-text {
+    display: flex;
+    margin-right: 32px;
+}
+
+.snackbar-text {
+    display: flex;
+    align-items: center;
+    max-width: 400px;
+}
+
+.snackbar-message .snackbar-close {
+    height: 28px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.snackbar-success .snackbar-close,
+.snackbar-warning .snackbar-close {
+    color:#474747;
+}
+
+.snackbar-error .snackbar-close {
+    color:#ffffff;
+}
+
+.mat-snack-bar-container {
+    font-weight: 500;
+    min-width: 456px !important;
+    max-width: 600px !important;
+    width: auto !important;
+    margin: 0px 24px auto 24px !important;
+}
+
+.snackbar-overlay-pane {
+    transform: translateY(64px) !important;
+}
+
+.snackbar-overlay-container {
+    z-index: 995 !important;
 }

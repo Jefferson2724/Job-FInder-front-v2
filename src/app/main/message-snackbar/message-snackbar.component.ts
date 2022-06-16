@@ -9,8 +9,7 @@ export class MessageSnackbarComponent implements OnInit, OnDestroy {
 
 	@ViewChild('snackbar', {static: false}) snackbarSpan: ElementRef<HTMLSpanElement>;
 	overlayPane: any;
-	overlayContainer: any;
-	
+	overlayContainer: any;	
 
 	constructor(
 		@Inject(MAT_SNACK_BAR_DATA) public data: any,
@@ -18,6 +17,10 @@ export class MessageSnackbarComponent implements OnInit, OnDestroy {
 	) { }
 
 	ngOnInit() {
+		
+	}
+
+	ngAfterViewInit(){
 		this.overlayPane = this.snackbarSpan.nativeElement.parentElement.parentElement.parentElement;
 		this.overlayContainer = this.overlayPane.parentElement.parentElement;
 

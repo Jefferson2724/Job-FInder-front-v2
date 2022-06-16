@@ -93,20 +93,17 @@ export class RegisterComponent implements OnInit {
       let data = this.identification == "student" ? this.isStudent(form) : this.isCompany(form);
       this.authenticationService.register(data);
 
-      //this.backAuth();
+      this.backAuth();
   }
 
   isStudent(form) {
       for(let field in form.value) {
           switch(field){
-            case 'identity':
-              this.dataStudent['cpf'] = form.value[field];
-              break;
             case 'avaibilityForm':
               this.dataStudent['availability'] = form.value[field];
               break;
             case 'organization':
-              this.dataStudent['organization'] = form.value[field];
+              this.dataStudent['college'] = form.value[field];
               break;
             case 'function':
               this.dataStudent['period'] = form.value[field];

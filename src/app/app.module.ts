@@ -38,7 +38,7 @@ import { CookieService } from 'ngx-cookie-service';
     HttpClientModule,
     MatSnackBarModule
   ],
-  providers: [AuthenticationService, MessageService, CookieService, MessageSnackbarComponent],
+  providers: [AuthenticationService, MessageService, CookieService],
   entryComponents: [MessageSnackbarComponent],
   bootstrap: [AppComponent]
 })

@@ -41,13 +41,12 @@ export class AuthComponent implements OnInit {
 	}
 
   enter(form) {
-    debugger;
       //TODO: Fazer validações redirecionar a tela principal
       /*if(this.loginForm.invalid){
           return;
       }*/
 
-      this.authenticationService.login(form.value);
+      this.authenticationService.authenticate(form.value);
   }
 
   openRegisterClick() {
