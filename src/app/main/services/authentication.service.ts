@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { UserLogin } from '../models/userLogin';
 import { MessageService } from './message.service';
 
 @Injectable({
@@ -38,7 +39,7 @@ export class AuthenticationService {
     }
 
     login(data){
-        let responseRegister: BehaviorSubject<any> = new BehaviorSubject(undefined);
+        let responseLogin: BehaviorSubject<any> = new BehaviorSubject(undefined);
         const header = { 
             headers: new HttpHeaders({
               'observe': 'response',
@@ -48,9 +49,30 @@ export class AuthenticationService {
 
         this.httpClient.post<any>(`${this.url}/userLogin`, data, header).subscribe(
             response => {
-                responseRegister.next(response);
+                responseLogin.next(response);
 
-                },
+            },
+            error => {
+              this.messageService.showSnackbar('Erro no login!', 'snackbar-error');
+            }
+        );
+    }
+
+    authenticate(data) {
+        let responseRegister: BehaviorSubject<any> = new BehaviorSubject(undefined);
+
+        this.httpClient.post<any>(`${this.url}/authenticate`, data, {observe: 'response'}).subscribe(
+            response => {
+                this.setTokenCookie(response.body.token);
+
+                let dataLogin = new UserLogin();
+                dataLogin._id = response.body.usuario._id;
+                dataLogin.login = data.login;
+                dataLogin.password = data.password;
+                this.login(dataLogin);
+
+                responseRegister.next(response.body.usuario);
+            },
             error => {
               this.messageService.showSnackbar('Erro no login!', 'snackbar-error');
 
@@ -61,24 +83,24 @@ export class AuthenticationService {
         return responseRegister.asObservable();
     }
 
-    authenticate(data) {
-        let responseRegister: BehaviorSubject<any> = new BehaviorSubject(undefined);
+    requestUser(idUser) {
+      let responseUser: BehaviorSubject<any> = new BehaviorSubject(undefined);
+      const header = { 
+          headers: new HttpHeaders({
+            'observe': 'response',
+            'Authorization': `${this.getToken()}`
+          })
+      }
 
-        this.httpClient.post<any>(`${this.url}/authenticate`, data, {observe: 'response'}).subscribe(
-            response => {
-                this.setTokenCookie(response.body.token);
-                responseRegister.next(response.body);
+      this.httpClient.get<any>(`${this.url}/userRead/${idUser}`, header).subscribe(
+          response => {
+              responseUser.next(response);
 
-                this.login(data);
-            },
-            error => {
-              this.messageService.showSnackbar('Erro no login!', 'snackbar-error');
-
-              responseRegister.next(undefined);
-            }
-        );
-
-        return responseRegister.asObservable();
+          },
+          error => {
+            this.messageService.showSnackbar('Erro no login!', 'snackbar-error');
+          }
+      );
     }
 
     setTokenCookie(token){

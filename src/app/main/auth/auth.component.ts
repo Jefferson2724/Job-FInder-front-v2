@@ -2,6 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
 import { CustomValidators } from './custom-validators';
+import { Router } from "@angular/router"
+
 
 @Component({
   selector: 'app-auth',
@@ -18,7 +20,8 @@ export class AuthComponent implements OnInit {
 
   constructor(
       private formBuilder: FormBuilder,
-      private authenticationService: AuthenticationService
+      private authenticationService: AuthenticationService,
+      private router: Router,
   ) { }
 
   ngOnInit() {
@@ -41,12 +44,16 @@ export class AuthComponent implements OnInit {
 	}
 
   enter(form) {
-      //TODO: Fazer validações redirecionar a tela principal
-      /*if(this.loginForm.invalid){
-          return;
-      }*/
+      this.authenticationService.authenticate(form.value).subscribe(
+          response => {
+              if(!response) {
+                 return;
+              }
+              debugger;
+              this.router.navigate(['/home', response._id])
+          }
+      )
 
-      this.authenticationService.authenticate(form.value);
   }
 
   openRegisterClick() {
