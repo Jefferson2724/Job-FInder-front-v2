@@ -9,14 +9,18 @@ import { ActivatedRoute } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   idUser: string;
+  isOpenMenu: boolean = false;
   
   constructor(
     private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
-      debugger;
       this.idUser = this.activatedRoute.snapshot.params['id'];
   }
 
+  showMenu() {
+      debugger;
+      this.isOpenMenu = !this.isOpenMenu;
+  }
 }

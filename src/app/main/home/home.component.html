@@ -1,16 +1,35 @@
-<div>
-  <nav>
-      <div class="profile-photo">
-          <img>
-      </div>
-      <div>
-          <label>
-              <input>
-          </label>
+<div class="container-nav">
+    <nav class="content-nav">
+        <div class="box-photo" (click)="showMenu()">
+            <div class="profile-photo"></div>
+            <i class="bi bi-chevron-down"></i>
+        </div>
+        <div class="box-options">
+            <label>
+                <button>
+                    Abrir nova vaga
+                </button>
+            </label>
 
-          <label>
-              <input>
-          </label>
-      </div>
-  </nav>
+            <label>
+                <button>
+                    Minhas vagas
+                </button>
+            </label>
+        </div>
+    </nav>
+    <div class="content-menu" *ngIf="isOpenMenu">
+        <div class="box-menu">
+            <button>
+                Ver perfil
+            </button>
+            <button>
+                Editar perfil
+            </button>
+            <button>
+                Sair
+            </button>
+        </div>
+    </div>
 </div>
+<div class="separator-header"></div>
