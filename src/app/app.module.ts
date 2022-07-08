@@ -17,6 +17,7 @@ import { MessageSnackbarComponent } from './main/message-snackbar/message-snackb
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { JobRecomendationComponent } from './main/job-recomendation/job-recomendation.component';
+import { JobSearchComponent } from './main/job-search/job-search.component';
 
 @NgModule({
   declarations: [			
@@ -27,6 +28,7 @@ import { JobRecomendationComponent } from './main/job-recomendation/job-recomend
       RegisterComponent,
       MessageSnackbarComponent,
       JobRecomendationComponent,
+      JobSearchComponent,
    ],
   imports: [
     BrowserModule,
