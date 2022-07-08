@@ -1,0 +1,82 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+    margin: initial !important;
+}
+
+.box-title {
+    margin: 20px 0!important;
+}
+
+.title-recomendation {
+    font-size: 30px;
+    font-family: Numans;
+}
+
+.container-recomendation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-recomendation {
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+    height: 90px;
+    background-color: #F8F9FA;
+    padding: 13px;
+    margin-bottom: 10px;
+}
+
+.info-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recomentation-photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 60px;
+}
+
+.profile-photo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #CCC;
+}
+
+.recomentation-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-right: 15px;
+}
+
+.title-profile {
+    font-size: 18px;
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
+.recomentation-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.recomentation-button button {
+    margin: initial 
+}
+
+.recomentation-info p span, .recomentation-button p span {
+    font-weight: bold;
+}

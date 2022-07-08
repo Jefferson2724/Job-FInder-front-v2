@@ -16,6 +16,7 @@ import { MessageService } from './main/services/message.service';
 import { MessageSnackbarComponent } from './main/message-snackbar/message-snackbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { JobRecomendationComponent } from './main/job-recomendation/job-recomendation.component';
 
 @NgModule({
   declarations: [			
@@ -25,6 +26,7 @@ import { CookieService } from 'ngx-cookie-service';
       AuthComponent,
       RegisterComponent,
       MessageSnackbarComponent,
+      JobRecomendationComponent,
    ],
   imports: [
     BrowserModule,
