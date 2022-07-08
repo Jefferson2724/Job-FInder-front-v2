@@ -6,23 +6,27 @@ p {
     margin: initial !important;
 }
 
-.box-title {
-    margin: 20px 0!important;
+.container-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
 }
 
-.title-recomendation {
-    font-size: 30px;
+.content-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.text-title {
+    font-size: 35px;
     font-family: 'Numans';
 }
 
-.container-recomendation {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.box-recomendation {
+.box-job {
     display: flex;
     justify-content: space-between;
     width: 900px;
@@ -32,27 +36,27 @@ p {
     margin-bottom: 10px;
 }
 
-.info-profile {
+.info-box {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.recomentation-photo {
+.box-photo {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 60px;
 }
 
-.profile-photo {
+.job-photo {
     width: 64px;
     height: 64px;
     border-radius: 50%;
     background-color: #CCC;
 }
 
-.recomentation-info {
+.job-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -66,17 +70,17 @@ p {
     text-transform: uppercase;
 }
 
-.recomentation-button {
+.job-button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
 }
 
-.recomentation-button button {
+.job-button button {
     margin: initial 
 }
 
-.recomentation-info p span, .recomentation-button p span {
+.job-info p span, .job-button p span {
     font-weight: bold;
 }
