@@ -7,7 +7,7 @@
         </div>
         <div class="box-options">
             <label>
-                <button>
+                <button (click)="openJobVacancy()" *ngIf="!noIsHomePage">
                     Abrir nova vaga
                 </button>
             </label>
@@ -34,15 +34,17 @@
     </div>
 </div>
 <div class="separator-header"></div>
-<div>
-    <app-job-recomendation></app-job-recomendation>
-</div>
-<div class="job-search">
-    <app-job-search></app-job-search>
-</div>
-<div class="list-jobs">
-    <app-list-jobs></app-list-jobs>
-</div>
-<div class="job-search">
-    <app-job-search></app-job-search>
+<div *ngIf="!noIsHomePage">
+    <div>
+        <app-job-recomendation></app-job-recomendation>
+    </div>
+    <div class="job-search">
+        <app-job-search></app-job-search>
+    </div>
+    <div class="list-jobs">
+        <app-list-jobs></app-list-jobs>
+    </div>
+    <div class="job-search">
+        <app-job-search></app-job-search>
+    </div>
 </div>

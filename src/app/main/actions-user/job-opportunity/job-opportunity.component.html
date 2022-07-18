@@ -1,0 +1,66 @@
+<div class="home">
+    <app-home [noIsHomePage]=true></app-home>
+</div>
+<div class="container-form">
+    <div class="titles">
+        <h2 class="title">
+            Divulgue a vaga preenchendo o formulário 
+        </h2>
+        <div class="separator-title"></div>
+        <span class="sub-title">
+            Preencha os dados da melhor forma possível para encontrar mais rápido seu dev
+        </span>
+    </div>
+    <div class="content-form">
+        <form class="form-new-job" [formGroup]="newJobForm">
+            <div class="box-input">
+                <label class="label-inputs">
+                    Titulo da Vaga:
+                </label>
+                <input class="form-inputs" formControlName="jobName" name="jobName" type="text" placeholder="Digite o titulo da vaga">
+            </div>
+            <div class="box-input">
+                <label class="label-inputs">
+                    Nome da Empresa:
+                </label>
+                <input class="form-inputs" formControlName="companyName" name="companyName" type="text" placeholder="Digite o nome da empresa">
+            </div>
+            <div class="box-input">
+                <label class="label-inputs">
+                    Turno da Vaga:
+                </label>
+                <input class="form-inputs" formControlName="turn" name="turn" type="text" placeholder="Ex: Manha / Tarde / Flexivel">
+            </div>
+            <div class="box-input">
+                <label class="label-inputs">
+                    Disponibilidade da Vaga:
+                </label>
+                <input class="form-inputs" formControlName="avaibility" name="availability" type="text" placeholder="Ex: Remoto / Presencial">
+            </div>
+            <div class="box-input">
+                <label class="label-inputs">
+                    Email para contato:
+                </label>
+                <input class="form-inputs" formControlName="contactEmail" name="contactEmail" type="text" placeholder="Digite o email para contato">
+            </div>
+            <div class="box-input">
+                <label class="label-inputs">
+                    Salário:
+                </label>
+                <input class="form-inputs" formControlName="salary" name="salary" type="number" placeholder="Digite o salário estimado">
+            </div>
+            <div class="box-input">
+              <label class="label-inputs">
+                  Descrição da vaga:
+              </label>
+              <textarea class="form-inputs" formControlName="description" name="description" type="areatext" placeholder="Digite o salário estimado"></textarea>
+          </div>
+            <div class="box-button">
+                <button class="btn button-pattern" (click)="create(newJobForm)"> Criar Vaga </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="job-search">
+  <app-job-search></app-job-search>
+</div>

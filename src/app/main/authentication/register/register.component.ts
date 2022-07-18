@@ -1,9 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CustomValidators } from '../auth/custom-validators';
-import { Company } from '../models/Company.model';
-import { Student } from '../models/student.model';
-import { AuthenticationService } from '../services/authentication.service';
+import { Company } from '../../models/Company.model';
+import { Student } from '../../models/student.model';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-register',

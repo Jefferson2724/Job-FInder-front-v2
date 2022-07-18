@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthenticationService } from '../services/authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 import { CustomValidators } from './custom-validators';
 import { Router } from "@angular/router"
 
@@ -50,7 +50,7 @@ export class AuthComponent implements OnInit {
               if(!response) {
                  return;
               }
-              debugger;
+
               this.router.navigate(['/home', response._id])
           }
       )

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthenticationService } from '../services/authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +12,8 @@ export class HomeComponent implements OnInit {
   idUser: string;
   isOpenMenu: boolean = false;
   userName: string;
-  
+  @Input() noIsHomePage: boolean;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private authenticationService: AuthenticationService,
@@ -20,9 +21,10 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-      this.idUser = this.activatedRoute.snapshot.params['id'];
-
-      this.infoUser();
+      if(!this.noIsHomePage) {
+          this.idUser = this.activatedRoute.snapshot.params['id'];
+          this.infoUser();
+      }
   }
 
   infoUser(){
@@ -38,12 +40,15 @@ export class HomeComponent implements OnInit {
   }
 
   showMenu() {
-      debugger;
       this.isOpenMenu = !this.isOpenMenu;
   }
 
   logout() {
-    this.authenticationService.deleteToken();
-    this.router.navigate(['/']);
+      this.authenticationService.deleteToken();
+      this.router.navigate(['/']);
+  }
+
+  openJobVacancy() {
+      this.router.navigate(['/openJob']);
   }
 }

@@ -7,18 +7,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './main/home/home.component';
-import { LoginComponent } from './main/login/login.component';
-import { AuthComponent } from './main/auth/auth.component';
-import { RegisterComponent } from './main/register/register.component';
+import { HomeComponent } from './main/home-page/home/home.component';
+import { LoginComponent } from './main/authentication/login/login.component';
+import { AuthComponent } from './main/authentication/auth/auth.component';
+import { RegisterComponent } from './main/authentication/register/register.component';
 import { AuthenticationService } from './main/services/authentication.service';
 import { MessageService } from './main/services/message.service';
 import { MessageSnackbarComponent } from './main/message-snackbar/message-snackbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { JobRecomendationComponent } from './main/job-recomendation/job-recomendation.component';
-import { JobSearchComponent } from './main/job-search/job-search.component';
-import { ListJobsComponent } from './main/list-jobs/list-jobs.component';
+import { JobRecomendationComponent } from './main/home-page/job-recomendation/job-recomendation.component';
+import { JobSearchComponent } from './main/home-page/job-search/job-search.component';
+import { ListJobsComponent } from './main/home-page/list-jobs/list-jobs.component';
+import { JobOpportunityComponent } from './main/actions-user/job-opportunity/job-opportunity.component';
 
 @NgModule({
   declarations: [			
@@ -30,7 +31,8 @@ import { ListJobsComponent } from './main/list-jobs/list-jobs.component';
       MessageSnackbarComponent,
       JobRecomendationComponent,
       JobSearchComponent,
-      ListJobsComponent
+      ListJobsComponent,
+      JobOpportunityComponent
    ],
   imports: [
     BrowserModule,
