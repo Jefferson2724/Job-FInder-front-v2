@@ -20,6 +20,8 @@ import { JobRecomendationComponent } from './main/home-page/job-recomendation/jo
 import { JobSearchComponent } from './main/home-page/job-search/job-search.component';
 import { ListJobsComponent } from './main/home-page/list-jobs/list-jobs.component';
 import { JobOpportunityComponent } from './main/actions-user/job-opportunity/job-opportunity.component';
+import { MyProfileComponent } from './main/profile/my-profile/my-profile.component';
+import { MyVacancyComponent } from './main/profile/my-vacancy/my-vacancy.component';
 
 @NgModule({
   declarations: [			
@@ -32,7 +34,9 @@ import { JobOpportunityComponent } from './main/actions-user/job-opportunity/job
       JobRecomendationComponent,
       JobSearchComponent,
       ListJobsComponent,
-      JobOpportunityComponent
+      JobOpportunityComponent,
+      MyProfileComponent,
+      MyVacancyComponent
    ],
   imports: [
     BrowserModule,

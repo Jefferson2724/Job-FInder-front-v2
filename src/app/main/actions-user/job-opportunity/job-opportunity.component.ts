@@ -37,7 +37,6 @@ export class JobOpportunityComponent implements OnInit {
   }
 
   create(form) {
-      
     console.log(form);
   }
 }

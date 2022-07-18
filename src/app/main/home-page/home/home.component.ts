@@ -11,8 +11,9 @@ export class HomeComponent implements OnInit {
 
   idUser: string;
   isOpenMenu: boolean = false;
-  userName: string;
-  @Input() noIsHomePage: boolean;
+  infoUserDTO: any;
+  @Input() isHomePage: boolean;
+  @Input() noIsMyProfilePage: boolean;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -21,10 +22,8 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-      if(!this.noIsHomePage) {
-          this.idUser = this.activatedRoute.snapshot.params['id'];
-          this.infoUser();
-      }
+      this.idUser = this.activatedRoute.snapshot.params['id'];
+      this.infoUser();
   }
 
   infoUser(){
@@ -34,7 +33,7 @@ export class HomeComponent implements OnInit {
             return;
         }
 
-        this.userName = response.name;
+        this.infoUserDTO = response;
       }
     );
   }
@@ -49,6 +48,15 @@ export class HomeComponent implements OnInit {
   }
 
   openJobVacancy() {
-      this.router.navigate(['/openJob']);
+      this.router.navigate(['/openJob', this.idUser]);
+  }
+
+  openMyProfile() {
+      this.router.navigate([`/profile`, this.idUser]);
+  }
+
+  openHome() {
+    debugger
+      this.router.navigate(['/home', this.idUser])
   }
 }

@@ -3,18 +3,24 @@
         <div class="box-photo" (click)="showMenu()">
             <div class="profile-photo"></div>
             <i class="bi bi-chevron-down"></i>
-            <span class="user-name">{{ userName }}</span>
+            <span class="user-name">{{ infoUserDTO.name }}</span>
         </div>
         <div class="box-options">
             <label>
-                <button (click)="openJobVacancy()" *ngIf="!noIsHomePage">
+                <button (click)="openJobVacancy()" *ngIf="!isHomePage">
                     Abrir nova vaga
                 </button>
             </label>
 
             <label>
-                <button>
+                <button (click)="openMyProfile()" *ngIf="!isHomePage || !noIsMyProfilePage">
                     Minhas vagas
+                </button>
+            </label>
+
+            <label>
+                <button (click)="openHome()" *ngIf="isHomePage || noIsMyProfilePage">
+                    Home
                 </button>
             </label>
         </div>
@@ -34,7 +40,7 @@
     </div>
 </div>
 <div class="separator-header"></div>
-<div *ngIf="!noIsHomePage">
+<div *ngIf="!isHomePage">
     <div>
         <app-job-recomendation></app-job-recomendation>
     </div>
