@@ -103,6 +103,30 @@ export class AuthenticationService {
       );
     }
 
+    getUserById(id) {
+      let responseUser: BehaviorSubject<any> = new BehaviorSubject(undefined);
+      const header = { 
+        headers: new HttpHeaders({
+          'observe': 'response',
+          'Authorization': `${this.getToken()}`
+        })
+      }
+
+      this.httpClient.get<any>(`${this.url}/readUser/${id}`, header).subscribe(
+          response => {
+              responseUser.next(response);
+          },
+          error => {
+            this.messageService.showSnackbar('Erro ao tentar buscar dados!', 'snackbar-error');
+
+            responseUser.next(undefined);
+          }
+      );
+
+      return responseUser.asObservable();
+
+    }
+
     setTokenCookie(token){
       this.cookies.set("Authorization", token);
     }

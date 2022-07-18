@@ -26,6 +26,7 @@ export class AuthComponent implements OnInit {
 
   ngOnInit() {
       this.buildLoginForm();
+      this.authenticationService.deleteToken();
   }
 
   buildLoginForm() {
