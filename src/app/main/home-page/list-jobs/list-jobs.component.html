@@ -1,11 +1,11 @@
-<div class="container-list">
+<div class="container-list" [ngClass]="{'container-profile': pageIsMyVacancy}">
     <div class="content-title">
         <p class="text-title">
             Vagas disponíveis no momento
         </p>
     </div>
     <div class="content-list-jobs">
-      <div class="box-job" *ngFor="let x of count">
+      <div class="box-job" *ngFor="let x of count" [ngClass]="{'content-profile': pageIsMyVacancy}">
           <div class="info-box">
               <div class="box-photo">
                   <div class="job-photo"></div>
@@ -14,11 +14,21 @@
                   <p class="title-profile">Desenvolvedor Full-stack WEB</p>
                   <p><span>Nome: </span>FAST Soluções Tecnologicas - LTDA</p>
                   <p><span>Salário: </span>R$ 5000,00</p>
+                  <p *ngIf="page == 'myVacancy'"><span>Disponibilidade:</span> Remoto</p>
               </div>
           </div>    
-          <div class="job-button">
+          <div class="job-button" *ngIf="page != 'myVacancy'">
               <button class="btn button-pattern">Ver vaga</button>
               <p><span>Disponibilidade: </span>Remoto</p>
           </div>
+          <div class="buttons-profile" *ngIf="page == 'myVacancy' && isStudent"> 
+              <button class="btn button-pattern no-radius">Enviar mensagem</button>
+              <div class="button-pattern no-radius">Status: Reprovado</div>
+          </div>
+          <div class="buttons-profile" *ngIf="page == 'myVacancy' && !isStudent">
+            <button class="btn button-pattern no-radius">Ver perfil</button>
+            <button class="btn button-pattern no-radius">Enviar mensagem</button>
+            <div class="button-pattern no-radius">Status: Reprovado</div>
+        </div>
       </div>
 </div>
