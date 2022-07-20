@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from "@angular/router"
-import { MatIconModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatSnackBarModule  } from '@angular/material';
+import { MatIconModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatSnackBarModule, MatDialog, MatDialogModule  } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +22,9 @@ import { ListJobsComponent } from './main/home-page/list-jobs/list-jobs.componen
 import { JobOpportunityComponent } from './main/actions-user/job-opportunity/job-opportunity.component';
 import { MyProfileComponent } from './main/profile/my-profile/my-profile.component';
 import { MyVacancyComponent } from './main/profile/my-vacancy/my-vacancy.component';
+import { ViewProfileComponent } from './main/actions-user/modais/view-profile/view-profile.component';
+import { ViewInfoJobComponent } from './main/actions-user/modais/view-info-job/view-info-job.component';
+import { EditProfileComponent } from './main/actions-user/modais/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [			
@@ -36,7 +39,10 @@ import { MyVacancyComponent } from './main/profile/my-vacancy/my-vacancy.compone
       ListJobsComponent,
       JobOpportunityComponent,
       MyProfileComponent,
-      MyVacancyComponent
+      MyVacancyComponent,
+      ViewProfileComponent,
+      ViewInfoJobComponent,
+      EditProfileComponent,
    ],
   imports: [
     BrowserModule,
@@ -50,10 +56,16 @@ import { MyVacancyComponent } from './main/profile/my-vacancy/my-vacancy.compone
     BrowserAnimationsModule,
     HttpClientModule,
     MatSnackBarModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule
   ],
   providers: [AuthenticationService, MessageService, CookieService],
-  entryComponents: [MessageSnackbarComponent],
+  entryComponents: [
+      MessageSnackbarComponent,
+      ViewProfileComponent,
+      ViewInfoJobComponent,
+      EditProfileComponent,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

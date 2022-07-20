@@ -1,0 +1,53 @@
+<div class="container-view-profile">
+    <div class="content-title">
+        <h2 class="title"> Perfil do usuario </h2>
+    </div>
+    <div class="content-photo">
+        <div class="profile-photo"></div>
+    </div>
+
+    <div class="separator-header"></div>
+
+    <div class="content-info">
+        <div class="box-personal">
+            <div class="info-description">
+                <p><span>Nome: </span>{{ infoUserDTO.name }} </p>
+            </div>
+            <div class="info-description">
+                <p><span>Email: </span> {{ infoUserDTO.email }}</p>
+            </div>
+            <div class="info-description">
+                <p><span>Contato: </span> {{ infoUserDTO.phone }}</p>
+            </div>
+            <div class="info-description">
+                <p><span>CPF: </span> {{ infoUserDTO.name }}</p>
+            </div>
+            <div class="info-description">
+                <p><span>Idade: </span> {{ infoUserDTO.age }}</p>
+            </div>
+        </div>
+        <div class="box-professional">
+            <div class="info-description">
+                <p><span>Faculdade: </span> {{ infoUserDTO.name }}</p>
+            </div>
+            <div class="info-description">
+                <p><span>Periodo: </span> {{ infoUserDTO.name }}</p>
+            </div>
+            <div class="info-description">
+                <p><span>Disponibilidade: </span> {{ infoUserDTO.name }}</p>
+            </div>
+        </div>
+        <div class="box-locality">
+            <div class="info-description">
+                <p><span>Nacionalidade: </span> {{ infoUserDTO.state }}</p>
+            </div>
+            <div class="info-description">
+                <p><span>Estado: </span> {{ infoUserDTO.nationality }}</p>
+            </div>
+        </div>  
+    </div>
+    <div class="separator-header"></div>
+    <div>
+       <button class="btn button-pattern">Baixar Curriculo</button>
+    </div>
+</div>

@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ViewProfileComponent } from '../../actions-user/modais/view-profile/view-profile.component';
 import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
@@ -19,6 +21,7 @@ export class HomeComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private authenticationService: AuthenticationService,
     private router: Router,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -56,7 +59,15 @@ export class HomeComponent implements OnInit {
   }
 
   openHome() {
-    debugger
-      this.router.navigate(['/home', this.idUser])
+      this.router.navigate(['/home', this.idUser]);
+  }
+
+  openModalViewProfile() {
+    this.dialog.open(ViewProfileComponent, {
+      height: '100%',
+			data: {
+				id: this.idUser
+			}
+		});
   }
 }
