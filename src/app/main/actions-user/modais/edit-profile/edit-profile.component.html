@@ -1,3 +1,71 @@
-<p>
-  edit-profile works!
-</p>
+<div class="background">
+    <div class="container-view-profile">
+        <div class="content-title">
+            <h2 class="title"> Perfil do usuario </h2>
+        </div>
+        <div class="content-photo">
+            <div class="profile-photo"></div>
+        </div>
+
+        <div class="separator-header"></div>
+
+        <div class="container-form">
+            <form class="form" [formGroup]="editUser">
+                <div class="form-1">
+                    <mat-form-field class="" appearance="fill">
+                      <mat-label>Nome</mat-label>
+                      <input matInput type="text" formControlName="name" placeholder="Digite seu Nome Completo">
+                    </mat-form-field>
+                    <mat-form-field class="" appearance="fill">
+                      <mat-label>Email</mat-label>
+                      <input matInput type="text" formControlName="email" placeholder="Digte seu Email" >
+                    </mat-form-field>
+                    <mat-form-field class="" appearance="fill">
+                      <mat-label>Contato</mat-label>
+                      <input matInput type="number" formControlName="phone" placeholder="Digite seu celular ou telefone" >
+                    </mat-form-field>
+                    <mat-form-field class="" appearance="fill">
+                      <mat-label>CPF/CNPJ</mat-label>
+                      <input matInput type="number" formControlName="identity" placeholder="CNPJ para empresas/CPF alunos" >
+                    </mat-form-field>
+                    <mat-form-field class="" appearance="fill">
+                      <mat-label>Idade</mat-label>
+                      <input matInput type="number" formControlName="age" placeholder="Digite sua idade" >
+                    </mat-form-field>
+                </div>
+                <div class="form-2">
+                    <mat-form-field class="" appearance="fill">
+                      <mat-label>Empresa/Instituição</mat-label>
+                      <input matInput type="text" formControlName="organization" placeholder="Digite sua empresa ou instituição" >
+                    </mat-form-field>
+                    <mat-form-field class="" appearance="fill">
+                      <mat-label>Cargo/Periodo</mat-label>
+                      <input matInput type="text" formControlName="function" placeholder="Digite seu cargo ou Periodo">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Disponibilidade</mat-label>
+                        <mat-select formControlName="avaibility" [(value)]="availability">
+                            <mat-option>Selecione uma opção</mat-option>
+                            <mat-option value="remote">Remoto</mat-option>
+                            <mat-option value="presential">Presencial</mat-option>
+                            <mat-option value="others">Hibrido</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="" appearance="fill">
+                        <mat-label>Nacionalidade</mat-label>
+                        <input matInput type="text" formControlName="nationality" placeholder="Digite sua Nacionalidade">
+                    </mat-form-field>
+                    <mat-form-field class="" appearance="fill">
+                        <mat-label>Estado</mat-label>
+                        <input matInput type="text" formControlName="state" placeholder="Digite seu estado" required>
+                    </mat-form-field>
+                </div>
+            </form>
+        </div>
+        <div class="separator-header"></div>
+        <div class="buttons">
+            <button class="btn btn-secudary" mat-dialog-close>Voltar</button>
+            <button class="btn btn-success" (click)="submittedSave(editUser)">Salvar</button>
+        </div>
+    </div>
+</div>

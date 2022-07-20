@@ -14,7 +14,7 @@
 
             <label>
                 <button (click)="openMyProfile()" *ngIf="!isHomePage || !noIsMyProfilePage">
-                    Minhas vagas
+                    Meu perfil
                 </button>
             </label>
 
@@ -30,7 +30,7 @@
             <button (click)="openModalViewProfile()">
                 Ver perfil
             </button>
-            <button>
+            <button (click)="openModalEditProfile()">
                 Editar perfil
             </button>
             <button (click)="logout()">

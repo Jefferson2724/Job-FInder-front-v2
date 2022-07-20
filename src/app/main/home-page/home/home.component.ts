@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EditProfileComponent } from '../../actions-user/modais/edit-profile/edit-profile.component';
 import { ViewProfileComponent } from '../../actions-user/modais/view-profile/view-profile.component';
 import { AuthenticationService } from '../../services/authentication.service';
 
@@ -63,11 +64,18 @@ export class HomeComponent implements OnInit {
   }
 
   openModalViewProfile() {
-    this.dialog.open(ViewProfileComponent, {
-      height: '100%',
-			data: {
-				id: this.idUser
-			}
-		});
+      this.dialog.open(ViewProfileComponent, {
+          height: '100%',
+          data: {
+              id: this.idUser
+          }
+      });
+  }
+
+  openModalEditProfile() {
+      this.dialog.open(EditProfileComponent, {
+          height: '100%',
+          data: this.infoUserDTO
+      });
   }
 }

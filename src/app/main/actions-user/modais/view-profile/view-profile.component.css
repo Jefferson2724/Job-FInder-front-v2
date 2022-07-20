@@ -1,9 +1,13 @@
+.background, ::ng-deep mat-dialog-container {
+    background-color: #F5F5F5 !important;
+}
+
 .container-view-profile {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 950px;
+    width: 800px;
 }
 
 .content-photo {

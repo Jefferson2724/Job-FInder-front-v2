@@ -1,0 +1,68 @@
+.background, ::ng-deep mat-dialog-container {
+    background-color: #DFDFDF !important;
+}
+
+.container-view-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+}
+
+.content-photo {
+    margin: 20px 0;
+}
+
+.profile-photo {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background-color: #CCC;
+}
+
+.container-form {
+    display: flex;
+}
+
+.form {
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.form-1 {
+    flex: 1;
+    width: 300px;
+}
+
+.form-2 {
+    flex: 1;
+    width: 300px;
+}
+
+.form-1, .form-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons {
+    max-width: 300px;
+    margin: auto;
+}
+
+::ng-deep mat-label, ::ng-deep .ng-star-inserted  {
+    color: #474747 !important;
+}
+
+.button-pattern {
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+.separator-header {
+    width: 750px;
+    margin: 15px 0;
+}
