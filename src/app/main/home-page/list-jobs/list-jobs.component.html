@@ -18,7 +18,7 @@
               </div>
           </div>    
           <div class="job-button" *ngIf="page != 'myVacancy'">
-              <button class="btn button-pattern">Ver vaga</button>
+              <button class="btn button-pattern" (click)="openModalVacancy()">Ver vaga</button>
               <p><span>Disponibilidade: </span>Remoto</p>
           </div>
           <div class="buttons-profile" *ngIf="page == 'myVacancy' && isStudent"> 

@@ -1,0 +1,62 @@
+.background, ::ng-deep mat-dialog-container {
+    background-color: #F5F5F5 !important;
+}
+
+.container-view-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+}
+
+.content-photo {
+    margin: 20px 0;
+}
+
+.profile-photo {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background-color: #CCC;
+}
+
+.box-personal, .box-professional, .box-locality {
+    margin-bottom: 15px;
+}
+
+.info-description {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.info-description span, .block-description span {
+    font-weight: 550;
+}
+
+p {
+    margin-bottom: 0 !important;
+}
+
+.block-description {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 10px;
+    width: 500px;
+    word-break: break-all;
+}
+
+.block-description span {
+    margin-bottom: 8px;
+}
+
+.button-pattern {
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+.separator-header {
+    width: 550px;
+    margin: 15px 0;
+}
