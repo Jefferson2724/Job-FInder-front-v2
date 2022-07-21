@@ -1,3 +1,11 @@
+<mat-form-field appearance="fill">
+	<mat-label>Indentifique-se</mat-label>
+	<mat-select [(value)]="identification">
+	  <mat-option>Selecione uma opção</mat-option>
+	  <mat-option value="company">Empresa</mat-option>
+	  <mat-option value="student">Aluno</mat-option>
+	</mat-select>
+  </mat-form-field>
 <form [formGroup]="loginForm">
 	<div class="box-input" [ngClass]="{ 'is-invalid': submitted && loginForm.controls.login.errors }">
 		<label>Login</label>

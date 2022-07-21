@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
 import { CustomValidators } from './custom-validators';
 import { Router } from "@angular/router"
+import { MessageService } from '../../services/message.service';
 
 
 @Component({
@@ -18,10 +19,13 @@ export class AuthComponent implements OnInit {
   @Output() openRegister = new EventEmitter();
   @Output() openForgotPassw = new EventEmitter()
 
+  identification: string;
+
   constructor(
       private formBuilder: FormBuilder,
       private authenticationService: AuthenticationService,
       private router: Router,
+      private messageService: MessageService,
   ) { }
 
   ngOnInit() {
@@ -45,15 +49,31 @@ export class AuthComponent implements OnInit {
 	}
 
   enter(form) {
-      this.authenticationService.authenticate(form.value).subscribe(
-          response => {
-              if(!response) {
-                 return;
-              }
+      if(this.identification == 'student'){
+          this.authenticationService.authenticate(form.value).subscribe(
+              response => {
+                  if(!response) {
+                    return;
+                  }
 
-              this.router.navigate(['/home', response._id])
-          }
-      )
+                  this.router.navigate(['/home', response._id])
+              }
+          )
+      } else if (this.identification == "company") {
+        this.authenticationService.authenticateCompany(form.value).subscribe(
+            response => {
+                debugger;
+                if(!response) {
+                  return;
+                }
+
+                this.router.navigate(['/home', response._id])
+            }
+        )
+      } else {
+          this.messageService.showSnackbar('Selecione um identificação !', 'snackbar-warning');
+          return;
+      }
 
   }
 

@@ -19,10 +19,29 @@ export class AuthenticationService {
       private messageService: MessageService,
       ) { }
     
-    register(data){
+    registerStudent(data){
       let responseRegister: BehaviorSubject<any> = new BehaviorSubject(undefined);
       
       this.httpClient.post<any>(`${this.url}/createUser`, data, {observe: 'response'}).subscribe(
+          response => {
+              responseRegister.next(response.body);
+
+              this.messageService.showSnackbar('Conta registrada com sucesso!', 'snackbar-success');
+          },
+          error => {
+              this.messageService.showSnackbar('Error, conta não criada !', 'snackbar-error');
+
+              responseRegister.next(undefined);
+          }
+      );
+
+      return responseRegister.asObservable();
+    }
+
+    registerCompany(data){
+      let responseRegister: BehaviorSubject<any> = new BehaviorSubject(undefined);
+      
+      this.httpClient.post<any>(`${this.url}/createCompany`, data, {observe: 'response'}).subscribe(
           response => {
               responseRegister.next(response.body);
 
@@ -58,6 +77,27 @@ export class AuthenticationService {
         );
     }
 
+    loginComapany(data){
+      debugger;
+      let responseLogin: BehaviorSubject<any> = new BehaviorSubject(undefined);
+      const header = { 
+          headers: new HttpHeaders({
+            'observe': 'response',
+            'Authorization': `${this.getToken()}`
+          })
+      }
+
+      this.httpClient.post<any>(`${this.url}/companyLogin`, data, header).subscribe(
+          response => {
+              responseLogin.next(response);
+
+          },
+          error => {
+            this.messageService.showSnackbar('Erro no login!', 'snackbar-error');
+          }
+      );
+  }
+
     authenticate(data) {
         let responseRegister: BehaviorSubject<any> = new BehaviorSubject(undefined);
 
@@ -82,6 +122,30 @@ export class AuthenticationService {
 
         return responseRegister.asObservable();
     }
+
+    authenticateCompany(data) {
+      let responseRegister: BehaviorSubject<any> = new BehaviorSubject(undefined);
+
+      this.httpClient.post<any>(`${this.url}/authenticateCompany`, data, {observe: 'response'}).subscribe(
+          response => {
+              this.setTokenCookie(response.body.token);
+
+              let dataLogin = new UserLogin();
+              dataLogin._id = response.body.company._id;
+              dataLogin.login = data.login;
+              dataLogin.password = data.password;
+
+              responseRegister.next(response.body.company);
+          },
+          error => {
+            this.messageService.showSnackbar('Erro no login!', 'snackbar-error');
+
+            responseRegister.next(undefined);
+          }
+      );
+
+      return responseRegister.asObservable();
+  }
 
     requestUser(idUser) {
       let responseUser: BehaviorSubject<any> = new BehaviorSubject(undefined);
@@ -113,6 +177,32 @@ export class AuthenticationService {
       }
 
       this.httpClient.get<any>(`${this.url}/readUser/${id}`, header).subscribe(
+          response => {
+              if(!response){
+                  response = "veio nada man";
+              }
+              responseUser.next(response);
+          },
+          error => {
+            this.messageService.showSnackbar('Erro ao tentar buscar dados!', 'snackbar-error');
+
+            responseUser.next(undefined);
+          }
+      );
+
+      return responseUser.asObservable();
+    }
+
+    getCompanyById(id) {
+      let responseUser: BehaviorSubject<any> = new BehaviorSubject(undefined);
+      const header = { 
+        headers: new HttpHeaders({
+          'observe': 'response',
+          'Authorization': `${this.getToken()}`
+        })
+      }
+
+      this.httpClient.get<any>(`${this.url}/readCompany/${id}`, header).subscribe(
           response => {
               responseUser.next(response);
           },

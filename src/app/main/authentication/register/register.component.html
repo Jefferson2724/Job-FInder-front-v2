@@ -33,9 +33,9 @@
                   <mat-label>CPF/CNPJ</mat-label>
                   <input matInput type="number" formControlName="identity" placeholder="CNPJ para empresas/CPF alunos" >
                 </mat-form-field>
-                <mat-form-field class="" appearance="fill">
+                <mat-form-field class="" appearance="fill" *ngIf="identification != 'company'">
                   <mat-label>Idade</mat-label>
-                  <input matInput type="number" formControlName="age" placeholder="Digite sua idade" >
+                  <input matInput type="number" formControlName="age" placeholder="Digite sua idade">
                 </mat-form-field>
                 <mat-form-field class="" appearance="fill">
                   <mat-label>Senha</mat-label>
@@ -43,7 +43,7 @@
                 </mat-form-field>
             </div>
             <div class="form-2">
-                <mat-form-field class="" appearance="fill">
+                <mat-form-field class="" appearance="fill" *ngIf="identification != 'company'">
                   <mat-label>Empresa/Instituição</mat-label>
                   <input matInput type="text" formControlName="organization" placeholder="Digite sua empresa ou instituição" >
                 </mat-form-field>
@@ -51,7 +51,7 @@
                   <mat-label>Cargo/Periodo</mat-label>
                   <input matInput type="text" formControlName="function" placeholder="Digite seu cargo ou Periodo">
                 </mat-form-field>
-                <mat-form-field appearance="fill">
+                <mat-form-field appearance="fill" *ngIf="identification != 'company'">
                     <mat-label>Disponibilidade</mat-label>
                     <mat-select formControlName="avaibilityForm" [(value)]="availability">
                         <mat-option>Selecione uma opção</mat-option>
@@ -60,7 +60,7 @@
                         <mat-option value="others">Hibrido</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field class="" appearance="fill">
+                <mat-form-field class="" appearance="fill" *ngIf="identification != 'company'">
                   <mat-label>Nacionalidade</mat-label>
                   <input matInput type="text" formControlName="nationality" placeholder="Digite sua Nacionalidade">
                 </mat-form-field>

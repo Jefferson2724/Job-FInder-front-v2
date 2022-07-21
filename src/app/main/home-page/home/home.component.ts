@@ -18,6 +18,8 @@ export class HomeComponent implements OnInit {
   @Input() isHomePage: boolean;
   @Input() noIsMyProfilePage: boolean;
 
+  name: string = "...";
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private authenticationService: AuthenticationService,
@@ -33,11 +35,28 @@ export class HomeComponent implements OnInit {
   infoUser(){
     this.authenticationService.getUserById(this.idUser).subscribe(
       response => {
-        if(!response) {
-            return;
-        }
+          if(!response) {
+              return;
+          }else if( response == "veio nada man") {
+              this.infoCompany();
+              return;
+          }
 
-        this.infoUserDTO = response;
+          this.name = response.name;
+          this.infoUserDTO = response;
+      }
+    );
+  }
+
+  infoCompany() {
+    this.authenticationService.getCompanyById(this.idUser).subscribe(
+      response => {
+          if(!response) {
+              return;
+          }
+
+          this.name = response.companyName;
+          this.infoUserDTO = response;
       }
     );
   }
