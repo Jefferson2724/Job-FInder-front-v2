@@ -77,8 +77,7 @@ export class AuthenticationService {
         );
     }
 
-    loginComapany(data){
-      debugger;
+    loginComapany(data){  
       let responseLogin: BehaviorSubject<any> = new BehaviorSubject(undefined);
       const header = { 
           headers: new HttpHeaders({

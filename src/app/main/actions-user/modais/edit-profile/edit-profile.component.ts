@@ -33,7 +33,6 @@ export class EditProfileComponent implements OnInit {
     }
     
     buildLoginForm(infoUser) {
-        debugger;
         this.editUser = this.formBuilder.group({
             name: [
                 infoUser.name, [Validators.required]

@@ -8,15 +8,33 @@
                 <div class="recomentation-photo">
                     <div class="profile-photo"></div>
                 </div>
-                <div class="recomentation-info">
+                <div class="recomentation-info" *ngIf="!isStudent">
                     <p class="title-profile">{{ user.title }}</p>
                     <p><span>Nome: </span>{{ user.name }}</p>
                     <p><span>Periodo: </span>{{ user.period }}</p>
                 </div>
+                <div class="recomentation-info" *ngIf="isStudent">
+                    <p class="title-profile">{{ user.jobName }}</p>
+                    <p><span>Empresa: </span>{{ user.companyName }}</p>
+                    <p><span>Salário: </span>{{ user.salary }}</p>
+                </div>
             </div>    
             <div class="recomentation-button">
-                <button class="btn button-pattern">Ver perfil</button>
-                <p><span>Disponibilidade: </span> {{ user.availability }}</p>
+                <button class="btn button-pattern">Ver mais</button>
+                <p *ngIf="!isStudent">
+                    <span>
+                        Disponibilidade: 
+                    </span> 
+
+                    {{ user.availability }}
+                </p>
+                <p *ngIf="isStudent">
+                    <span>
+                        Disponibilidade: 
+                    </span> 
+
+                    {{ user.turn }}
+                </p>
             </div>
         </div>
     </div>

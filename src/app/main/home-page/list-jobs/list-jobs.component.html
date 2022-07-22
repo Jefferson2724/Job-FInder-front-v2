@@ -5,30 +5,40 @@
         </p>
     </div>
     <div class="content-list-jobs">
-      <div class="box-job" *ngFor="let x of count" [ngClass]="{'content-profile': pageIsMyVacancy}">
-          <div class="info-box">
-              <div class="box-photo">
-                  <div class="job-photo"></div>
-              </div>
-              <div class="job-info">
-                  <p class="title-profile">Desenvolvedor Full-stack WEB</p>
-                  <p><span>Nome: </span>FAST Soluções Tecnologicas - LTDA</p>
-                  <p><span>Salário: </span>R$ 5000,00</p>
-                  <p *ngIf="page == 'myVacancy'"><span>Disponibilidade:</span> Remoto</p>
-              </div>
-          </div>    
-          <div class="job-button" *ngIf="page != 'myVacancy'">
-              <button class="btn button-pattern" (click)="openModalVacancy()">Ver vaga</button>
-              <p><span>Disponibilidade: </span>Remoto</p>
-          </div>
-          <div class="buttons-profile" *ngIf="page == 'myVacancy' && isStudent"> 
-              <button class="btn button-pattern no-radius">Enviar mensagem</button>
-              <div class="button-pattern no-radius">Status: Reprovado</div>
-          </div>
-          <div class="buttons-profile" *ngIf="page == 'myVacancy' && !isStudent">
-            <button class="btn button-pattern no-radius">Ver perfil</button>
-            <button class="btn button-pattern no-radius">Enviar mensagem</button>
-            <div class="button-pattern no-radius">Status: Reprovado</div>
-        </div>
+      <div class="box-job" *ngFor="let user of recomendationUsers" [ngClass]="{'content-profile': pageIsMyVacancy}">
+            <div class="info-box">
+                <div class="box-photo">
+                    <div class="job-photo"></div>
+                </div>
+
+                <div class="job-info" *ngIf="isStudent">
+                    <p class="title-profile">{{ user.jobName }}</p>
+                    <p><span>Empresa: </span>{{ user.companyName }}</p>
+                    <p><span>Salário: </span>{{ user.salary }}</p>
+                    <p *ngIf="page == 'myVacancy'"><span>Disponibilidade:</span> {{ user.turn }} </p>
+                </div>
+
+                <div class="job-info" *ngIf="!isStudent">
+                    <p class="title-profile">{{ user.title }}</p>
+                    <p><span>Nome: </span>{{ user.name }}</p>
+                    <p><span>Periodo: </span>{{ user.period }}</p>
+                    <p *ngIf="page == 'myVacancy'"><span>Disponibilidade:</span> {{ user.availability }} </p>
+                </div>
+
+           </div>    
+            <div class="job-button" *ngIf="page != 'myVacancy'">
+                <button class="btn button-pattern" (click)="openModalVacancy()">Ver mais</button>
+                <p *ngIf="!isStudent"><span>Disponibilidade: </span>{{ user.availability }}</p>
+                <p *ngIf="isStudent"><span>Disponibilidade: </span>{{ user.turn }}</p>
+            </div>
+            <div class="buttons-profile" *ngIf="page == 'myVacancy' && isStudent"> 
+                <button class="btn button-pattern no-radius">Enviar mensagem</button>
+                <div class="button-pattern no-radius">Status: Reprovado</div>
+            </div>
+            <div class="buttons-profile" *ngIf="page == 'myVacancy' && !isStudent">
+                <button class="btn button-pattern no-radius">Ver perfil</button>
+                <button class="btn button-pattern no-radius">Enviar mensagem</button>
+                <div class="button-pattern no-radius">Status: Reprovado</div>
+            </div>
       </div>
 </div>

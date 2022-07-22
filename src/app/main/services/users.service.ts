@@ -31,7 +31,6 @@ export class UsersService {
 
       this.httpClient.get<any>(`${this.url}/getAll`, header).subscribe(
           response => {
-              debugger;
               responseAllUsers.next(response);
           },
           error => {
@@ -41,4 +40,25 @@ export class UsersService {
 
       return responseAllUsers.asObservable();
   }
+
+  getAllJobs(){
+    let responseAllUsers: BehaviorSubject<any> = new BehaviorSubject(undefined);
+    const header = { 
+        headers: new HttpHeaders({
+          'observe': 'response',
+          'Authorization': `${this.authenticationService.getToken()}`
+        })
+    }
+
+    this.httpClient.get<any>(`${this.url}/jobs`, header).subscribe(
+        response => {
+            responseAllUsers.next(response);
+        },
+        error => {
+          this.messageService.showSnackbar('Erro no login!', 'snackbar-error');
+        }
+    );
+
+    return responseAllUsers.asObservable();
+}
 }

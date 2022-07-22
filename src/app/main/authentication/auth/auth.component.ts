@@ -62,7 +62,6 @@ export class AuthComponent implements OnInit {
       } else if (this.identification == "company") {
         this.authenticationService.authenticateCompany(form.value).subscribe(
             response => {
-                debugger;
                 if(!response) {
                   return;
                 }

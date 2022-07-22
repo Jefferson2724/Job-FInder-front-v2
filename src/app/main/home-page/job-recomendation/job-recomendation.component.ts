@@ -14,6 +14,7 @@ export class JobRecomendationComponent implements OnInit {
   count = ['1', '2', '3'];
   infoUserDTO: any;
   idUser: string;
+  isStudent: boolean;
 
   name: string;
 
@@ -35,7 +36,6 @@ export class JobRecomendationComponent implements OnInit {
   ngOnInit() {
     this.idUser = this.activatedRoute.snapshot.params['id'];
     this.infoUser();
-    this.getUsers();
   }
 
   infoUser(){
@@ -43,11 +43,13 @@ export class JobRecomendationComponent implements OnInit {
       response => {
           if(!response) {
               return;
-          }else if( response == "veio nada man") {
+          }else if(response == "veio nada man") {
               this.infoCompany();
               return;
           }
-
+          
+          this.isStudent = true;
+          this.getJobs();
           this.infoUserDTO = response;
       }
     );
@@ -60,6 +62,8 @@ export class JobRecomendationComponent implements OnInit {
               return;
           }
 
+          this.isStudent = false;
+          this.getUsers();
           this.name = response.companyName;
           this.infoUserDTO = response;
       }
@@ -67,7 +71,16 @@ export class JobRecomendationComponent implements OnInit {
   }
 
   getJobs() {
+      this.usersSerice.getAllJobs().subscribe(
+        response => {
+            if(!response) {
+              return;
+            }
 
+            this.listUsers = response;
+            this.showUsersRecomendation(response);
+        }
+    );
   }
 
   getUsers() {
@@ -84,7 +97,7 @@ export class JobRecomendationComponent implements OnInit {
   }
 
   showUsersRecomendation(list){
-      let lengthUsers = list.length;
+      let lengthUsers = list.length - 1;
       let count = 0;
       let alreadyNums = [];
       

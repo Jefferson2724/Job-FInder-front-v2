@@ -185,7 +185,7 @@ export class RegisterComponent implements OnInit {
 
         for(let field in form.value) {
             if(field == "age" || field == "function" || field == "organization"
-            || field == "nationality" || field == "avaibilityForm") {
+            || field == "nationality" || field == "avaibilityForm" || field == "title") {
                 continue;
             }
 
