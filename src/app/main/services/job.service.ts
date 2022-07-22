@@ -33,7 +33,7 @@ export class JobService {
       this.httpClient.post<any>(`${this.url}/createJob`, data, header).subscribe(
           response => {
               responseCreateJob.next(response);
-              this.messageService.showSnackbar('Você criou a vaga com sucesso!', 'snackbar-error');
+              this.messageService.showSnackbar('Você criou a vaga com sucesso!', 'snackbar-success');
           },
           error => {
               this.messageService.showSnackbar('Houve um problema na criação, entre em contato com o administrador!', 'snackbar-error');
@@ -42,4 +42,28 @@ export class JobService {
 
       return responseCreateJob.asObservable();
   }
+
+  applicateJob(data){
+    let responseCreateJob: BehaviorSubject<any> = new BehaviorSubject(undefined);
+
+    const header = { 
+        headers: new HttpHeaders({
+          'observe': 'response',
+          'Authorization': `${this.authenticationService.getToken()}`
+        })
+    }
+    debugger;
+    console.log(data);
+    this.httpClient.post<any>(`${this.url}/applied`, data, header).subscribe(
+        response => {
+            responseCreateJob.next(response);
+            this.messageService.showSnackbar('Vaga aplicada com sucesso !', 'snackbar-success');
+        },
+        error => {
+            this.messageService.showSnackbar('Não foi possível aplicar a vaga, tente novamente mais tarde !', 'snackbar-error');
+        }
+    );
+
+    return responseCreateJob.asObservable();
+}
 }

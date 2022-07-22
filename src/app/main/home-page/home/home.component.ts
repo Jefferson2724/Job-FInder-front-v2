@@ -89,8 +89,9 @@ export class HomeComponent implements OnInit {
       this.dialog.open(ViewProfileComponent, {
           height: '100%',
           data: {
-              id: this.idUser
-          }
+            "info": this.infoUserDTO,
+            "isHome": true
+        }
       });
   }
 

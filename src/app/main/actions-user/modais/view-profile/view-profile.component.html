@@ -12,10 +12,11 @@
         <div class="content-info">
             <div class="box-personal">
                 <div class="info-description">
-                    <p><span>Titulo do usuário: </span>{{ data.title }} </p>
+                    <p *ngIf="!isCompanyHome"><span>Titulo do usuário: </span>{{ data.title }} </p>
                 </div>
                 <div class="info-description">
-                    <p><span>Nome: </span>{{ data.name }} </p>
+                    <p *ngIf="!isCompanyHome"><span>Nome: </span>{{ data.name }} </p>
+                    <p *ngIf="isCompanyHome"><span>Nome: </span>{{ data.companyName }} </p>
                 </div>
                 <div class="info-description">
                     <p><span>Email: </span> {{ data.email }}</p>
@@ -27,23 +28,24 @@
                     <p><span>CPF: </span> {{ data.identity }}</p>
                 </div>
                 <div class="info-description">
-                    <p><span>Idade: </span> {{ data.age }}</p>
+                    <p *ngIf="!isCompanyHome"><span>Idade: </span> {{ data.age }}</p>
                 </div>
             </div>
             <div class="box-professional">
                 <div class="info-description">
-                    <p><span>Faculdade: </span> {{ data.college }}</p>
+                    <p *ngIf="!isCompanyHome"><span>Faculdade: </span> {{ data.college }}</p>
                 </div>
                 <div class="info-description">
-                    <p><span>Periodo: </span> {{ data.period }}</p>
+                    <p *ngIf="!isCompanyHome"><span>Periodo: </span> {{ data.period }}</p>
                 </div>
                 <div class="info-description">
-                    <p><span>Disponibilidade: </span> {{ data.availability }}</p>
+                    <p *ngIf="!isCompanyHome"><span>Disponibilidade: </span> {{ data.availability }}</p>
                 </div>
             </div>
             <div class="box-locality">
                 <div class="info-description">
-                    <p><span>Nacionalidade: </span> {{ data.nationality }}</p>
+                    <p *ngIf="!isCompanyHome"><span>Nacionalidade: </span> {{ data.nationality }}</p>
+                    <p *ngIf="isCompanyHome"><span>Nacionalidade: </span> Brasil</p>
                 </div>
                 <div class="info-description">
                     <p><span>Estado: </span> {{ data.state }}</p>
@@ -51,7 +53,7 @@
             </div>  
         </div>
         <div class="separator-header"></div>
-        <div>
+        <div *ngIf="!isCompanyHome">
           <button class="btn button-pattern">Baixar Curriculo</button>
         </div>
     </div>

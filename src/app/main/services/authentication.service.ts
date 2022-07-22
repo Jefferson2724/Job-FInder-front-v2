@@ -213,7 +213,54 @@ export class AuthenticationService {
       );
 
       return responseUser.asObservable();
+    }
 
+    updateProfileUser(data) {
+      let responseUpdateUser: BehaviorSubject<any> = new BehaviorSubject(undefined);
+      const header = { 
+        headers: new HttpHeaders({
+          'observe': 'response',
+          'Authorization': `${this.getToken()}`
+        })
+      }
+
+      this.httpClient.put<any>(`${this.url}/updateUser`, data, header).subscribe(
+          response => {
+            responseUpdateUser.next(response);
+            this.messageService.showSnackbar('Informações salvas com sucesso!', 'snackbar-success');
+          },
+          error => {
+            this.messageService.showSnackbar('Houve um problema na hora de salvar, tente novamente mais tarde !', 'snackbar-error');
+
+            responseUpdateUser.next(undefined);
+          }
+      );
+
+      return responseUpdateUser.asObservable();
+  }
+
+    updateProfileCompany(data) {
+        let responseUpdateCompany: BehaviorSubject<any> = new BehaviorSubject(undefined);
+        const header = { 
+          headers: new HttpHeaders({
+            'observe': 'response',
+            'Authorization': `${this.getToken()}`
+          })
+        }
+
+        this.httpClient.put<any>(`${this.url}/updateCompany`, data, header).subscribe(
+            response => {
+              responseUpdateCompany.next(response);
+              this.messageService.showSnackbar('Informações salvas com sucesso!', 'snackbar-success');
+            },
+            error => {
+              this.messageService.showSnackbar('Houve um problema na hora de salvar, tente novamente mais tarde !', 'snackbar-error');
+
+              responseUpdateCompany.next(undefined);
+            }
+        );
+
+        return responseUpdateCompany.asObservable();
     }
 
     setTokenCookie(token){

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
+import { EditProfileComponent } from '../../actions-user/modais/edit-profile/edit-profile.component';
 import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
@@ -15,6 +17,7 @@ export class MyProfileComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private authenticationService: AuthenticationService,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -50,5 +53,12 @@ export class MyProfileComponent implements OnInit {
       }
     );
   }
+
+  openModalEditProfile() {
+    this.dialog.open(EditProfileComponent, {
+        height: '100%',
+        data: this.infoUserDTO
+    });
+}
 
 }

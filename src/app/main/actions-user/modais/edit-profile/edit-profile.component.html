@@ -12,9 +12,13 @@
         <div class="container-form">
             <form class="form" [formGroup]="editUser">
                 <div class="form-1">
-                    <mat-form-field class="" appearance="fill">
+                    <mat-form-field class="" appearance="fill" *ngIf="isStudent">
                       <mat-label>Nome</mat-label>
                       <input matInput type="text" formControlName="name" placeholder="Digite seu Nome Completo">
+                    </mat-form-field>
+                    <mat-form-field class="" appearance="fill" *ngIf="!isStudent">
+                      <mat-label>Empresa:</mat-label>
+                      <input matInput type="text" formControlName="companyName" placeholder="Digite o nome da empresa">
                     </mat-form-field>
                     <mat-form-field class="" appearance="fill">
                       <mat-label>Email</mat-label>
@@ -28,23 +32,27 @@
                       <mat-label>CPF/CNPJ</mat-label>
                       <input matInput type="number" formControlName="identity" placeholder="CNPJ para empresas/CPF alunos" >
                     </mat-form-field>
-                    <mat-form-field class="" appearance="fill">
+                    <mat-form-field class="" appearance="fill" *ngIf="isStudent">
                       <mat-label>Idade</mat-label>
                       <input matInput type="number" formControlName="age" placeholder="Digite sua idade" >
                     </mat-form-field>
+                    <mat-form-field class="" appearance="fill" *ngIf="isStudent">
+                      <mat-label>Titulo</mat-label>
+                      <input matInput type="text" formControlName="title" placeholder="Ex: Desenvolvedor Android" >
+                    </mat-form-field>
                 </div>
                 <div class="form-2">
-                    <mat-form-field class="" appearance="fill">
+                    <mat-form-field class="" appearance="fill" *ngIf="isStudent">
                       <mat-label>Empresa/Instituição</mat-label>
                       <input matInput type="text" formControlName="organization" placeholder="Digite sua empresa ou instituição" >
                     </mat-form-field>
-                    <mat-form-field class="" appearance="fill">
+                    <mat-form-field class="" appearance="fill" *ngIf="isStudent">
                       <mat-label>Cargo/Periodo</mat-label>
                       <input matInput type="text" formControlName="function" placeholder="Digite seu cargo ou Periodo">
                     </mat-form-field>
-                    <mat-form-field appearance="fill">
+                    <mat-form-field appearance="fill" *ngIf="isStudent">
                         <mat-label>Disponibilidade</mat-label>
-                        <mat-select formControlName="avaibility" [(value)]="availability">
+                        <mat-select formControlName="availability" [(value)]="availability">
                             <mat-option>Selecione uma opção</mat-option>
                             <mat-option value="remote">Remoto</mat-option>
                             <mat-option value="presential">Presencial</mat-option>
@@ -59,13 +67,17 @@
                         <mat-label>Estado</mat-label>
                         <input matInput type="text" formControlName="state" placeholder="Digite seu estado" required>
                     </mat-form-field>
+                    <mat-form-field class="" appearance="fill">
+                      <mat-label>password</mat-label>
+                      <input matInput type="password" formControlName="password" placeholder="Digite sua senha" required>
+                  </mat-form-field>
                 </div>
             </form>
         </div>
         <div class="separator-header"></div>
         <div class="buttons">
             <button class="btn btn-secudary" mat-dialog-close>Voltar</button>
-            <button class="btn btn-success" (click)="submittedSave(editUser)">Salvar</button>
+            <button class="btn btn-success" (click)="requestEditUser(editUser)">Salvar</button>
         </div>
     </div>
 </div>

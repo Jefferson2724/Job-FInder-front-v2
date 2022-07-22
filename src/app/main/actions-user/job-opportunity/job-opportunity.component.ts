@@ -46,7 +46,6 @@ export class JobOpportunityComponent implements OnInit {
   }
 
   create(form) {
-      debugger;
       if(this.newJobForm.invalid) {
           this.messageService.showSnackbar("Preencha as informações corretamente !", 'snackbar-warning');
           return;

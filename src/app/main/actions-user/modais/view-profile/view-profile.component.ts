@@ -13,13 +13,24 @@ export class ViewProfileComponent implements OnInit {
   idUser: string;
   data: any;
   infoUserDTO: any;
+  isCompanyHome: boolean;
 
   constructor(
       private dialogRef: MatDialogRef<ViewProfileComponent>,
       private usersSerice: UsersService,
       @Optional() @Inject(MAT_DIALOG_DATA) data,
   ) { 
-      this.data = data;
+
+      if(data.isHome){
+          this.isCompanyHome = data.isHome
+          this.data = data.info;
+
+          if(this.data.userType == "Estudante") {
+              this.isCompanyHome = false;
+          }
+      } else {
+          this.data = data;
+      }
   }
 
   ngOnInit() {

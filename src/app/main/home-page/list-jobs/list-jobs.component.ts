@@ -143,16 +143,17 @@ export class ListJobsComponent implements OnInit {
   }
 
   openModalVacancy(vacancy){
-      this.dialog.open(ViewInfoJobComponent, {
-          height: '100%',
-          data: vacancy
-      });
+        vacancy['id'] = this.idUser;
+        this.dialog.open(ViewInfoJobComponent, {
+            height: '100%',
+            data: vacancy
+        });
   }
 
   openModalViewProfile(student) {
-      this.dialog.open(ViewProfileComponent, {
-          height: '100%',
-          data: student
-      });
+        this.dialog.open(ViewProfileComponent, {
+            height: '100%',
+            data: student
+        });
   }
 }

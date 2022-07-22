@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { JobService } from 'src/app/main/services/job.service';
 import { UsersService } from 'src/app/main/services/users.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class ViewInfoJobComponent implements OnInit {
   constructor(
       private dialogRef: MatDialogRef<ViewInfoJobComponent>,
       private usersService: UsersService,
+      private jobService: JobService,
       @Optional() @Inject(MAT_DIALOG_DATA) data,
   ) { 
       this.data = data;
@@ -24,5 +26,12 @@ export class ViewInfoJobComponent implements OnInit {
       if(!this.data) {
           this.dialogRef.close();
       }
+  }
+
+  applicatationVacancy() {
+      debugger;
+      this.data['appliedBy'] = this.data.id;
+      this.data['job_id'] = this.data._id;
+      this.jobService.applicateJob(this.data);
   }
 }
