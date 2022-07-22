@@ -1,7 +1,10 @@
 <app-home [noIsMyProfilePage]="true" [isHomePage]="true"></app-home>
 <div class="container-profile">
-    <div class="title-my-profile">
-        Perfil da Empresa/Usuario
+    <div class="title-my-profile" *ngIf="isStudent">
+        Perfil do Usuario
+    </div>
+    <div class="title-my-profile" *ngIf="!isStudent">
+        Perfil da Empresa
     </div>
     <div class="info-profile">
         <div class="box-photo">
@@ -11,40 +14,46 @@
         <div class="box-info1">
             <div class="info-personal">
                 <div class="info-description">
-                    <p><span>Nome: </span>Jefferson</p>
+                    <p *ngIf="isStudent"><span>Nome: </span>{{ infoUserDTO.name }}</p>
+                    <p *ngIf="!isStudent"><span>Nome: </span>{{ infoUserDTO.companyName }}</p>
                 </div>
                 <div class="info-description">
-                    <p><span>Email: </span>Jefferson@gmail.com</p>
+                    <p *ngIf="isStudent"><span>Email: </span>{{ infoUserDTO.email }}</p>
+                    <p *ngIf="!isStudent"><span>Email: </span>{{ infoUserDTO.email }}</p>
                 </div>
                 <div class="info-description">
-                    <p><span>Contato: </span>81 8390</p>
+                    <p *ngIf="isStudent"><span>Contato: </span>{{ infoUserDTO.phone }}</p>
+                    <p *ngIf="!isStudent"><span>Contato: </span>{{ infoUserDTO.phone }}</p>
                 </div>
                 <div class="info-description">
-                    <p><span>CPF: </span>123.123</p>
+                    <p *ngIf="isStudent"><span>CPF: </span>{{ infoUserDTO.identity }}</p>
+                    <p *ngIf="!isStudent"><span>Contato: </span>{{ infoUserDTO.identity }}</p>
                 </div>
-                <div class="info-description">
-                    <p><span>Idade: </span> 19</p>
+                <div class="info-description" *ngIf="isStudent">
+                    <p *ngIf="isStudent"><span>Idade: </span> {{ infoUserDTO.age }}</p>
                 </div>
             </div>
             <div class="info-professional">
-                <div class="info-description">
-                    <p><span>Empresa: </span> 19</p>
+                <div class="info-description" *ngIf="isStudent">
+                    <p *ngIf="isStudent"><span>Empresa: </span> {{ infoUserDTO.college }} </p>
                 </div>
-                <div class="info-description">
-                    <p><span>Cargo: </span> 19</p>
+                <div class="info-description" *ngIf="isStudent">
+                    <p *ngIf="isStudent"><span>Cargo: </span> {{ infoUserDTO.period }} </p>
                 </div>
-                <div class="info-description">
-                    <p><span>Disponibilidade: </span> 19</p>
+                <div class="info-description" *ngIf="isStudent">
+                    <p *ngIf="isStudent"><span>Disponibilidade: </span> {{ infoUserDTO.availability }} </p>
                 </div>
             </div>
         </div>
         <div class="box-info2">
             <div class="info-personal">
                 <div class="info-description">
-                    <p><span>Nacionalidade: </span> Brasil</p>
+                    <p *ngIf="isStudent"><span>Nacionalidade: </span> {{ infoUserDTO.nationality}}</p>
+                    <p *ngIf="!isStudent"><span>Nacionalidade: </span> Brasil</p>
                 </div>
                 <div class="info-description">
-                    <p><span>Estado: </span> Pernambuco</p>
+                    <p *ngIf="isStudent"><span>Estado: </span> {{ infoUserDTO.state }}</p>
+                    <p *ngIf="!isStudent"><span>Estado: </span> {{ infoUserDTO.state }}</p>
                 </div>
             </div>
             <div class="import-curriculum">
@@ -55,5 +64,5 @@
 </div>
 <div class="separator-header"></div>
 <div class="my-vacancy">
-    <app-my-vacancy [infoUser]="infoUser"></app-my-vacancy>
+    <app-my-vacancy></app-my-vacancy>
 </div>
