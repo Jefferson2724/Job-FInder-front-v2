@@ -20,7 +20,7 @@
                 </div>
             </div>    
             <div class="recomentation-button">
-                <button class="btn button-pattern">Ver mais</button>
+                <button *ngIf="!isStudent" class="btn button-pattern" (click)="openModalViewProfile(user)">Ver mais</button>
                 <p *ngIf="!isStudent">
                     <span>
                         Disponibilidade: 
@@ -28,6 +28,8 @@
 
                     {{ user.availability }}
                 </p>
+
+                <button *ngIf="isStudent" class="btn button-pattern" (click)="openModalVacancy(user)">Ver mais</button>
                 <p *ngIf="isStudent">
                     <span>
                         Disponibilidade: 

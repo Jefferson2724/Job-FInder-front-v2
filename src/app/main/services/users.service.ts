@@ -60,5 +60,26 @@ export class UsersService {
     );
 
     return responseAllUsers.asObservable();
-}
+  }
+
+  getJobById(_id){
+      let responseJob: BehaviorSubject<any> = new BehaviorSubject(undefined);
+      const header = { 
+          headers: new HttpHeaders({
+            'observe': 'response',
+            'Authorization': `${this.authenticationService.getToken()}`
+          })
+      }
+
+      this.httpClient.get<any>(`${this.url}/readJob/${_id}`, header).subscribe(
+          response => {
+            responseJob.next(response);
+          },
+          error => {
+            this.messageService.showSnackbar('Erro no login!', 'snackbar-error');
+          }
+      );
+
+      return responseJob.asObservable();
+  }
 }

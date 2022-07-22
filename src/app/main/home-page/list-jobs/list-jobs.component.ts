@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { ViewInfoJobComponent } from '../../actions-user/modais/view-info-job/view-info-job.component';
+import { ViewProfileComponent } from '../../actions-user/modais/view-profile/view-profile.component';
 import { AuthenticationService } from '../../services/authentication.service';
 import { UsersService } from '../../services/users.service';
 
@@ -141,10 +142,17 @@ export class ListJobsComponent implements OnInit {
       }
   }
 
-  openModalVacancy(){
+  openModalVacancy(vacancy){
       this.dialog.open(ViewInfoJobComponent, {
           height: '100%',
-          data: this.infoJob
+          data: vacancy
+      });
+  }
+
+  openModalViewProfile(student) {
+      this.dialog.open(ViewProfileComponent, {
+          height: '100%',
+          data: student
       });
   }
 }

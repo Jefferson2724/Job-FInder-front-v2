@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ViewInfoJobComponent } from '../../actions-user/modais/view-info-job/view-info-job.component';
+import { ViewProfileComponent } from '../../actions-user/modais/view-profile/view-profile.component';
 import { AuthenticationService } from '../../services/authentication.service';
 import { UsersService } from '../../services/users.service';
 
@@ -28,7 +30,6 @@ export class JobRecomendationComponent implements OnInit {
   constructor(
       private activatedRoute: ActivatedRoute,
       private authenticationService: AuthenticationService,
-      private router: Router,
       private dialog: MatDialog,
       private usersSerice: UsersService,
   ) { }
@@ -122,5 +123,19 @@ export class JobRecomendationComponent implements OnInit {
 
           this.recomendationUsers.push(this.listUsers[numRandom]);
       }
+  }
+
+  openModalVacancy(vacancy){
+      this.dialog.open(ViewInfoJobComponent, {
+          height: '100%',
+          data: vacancy
+      });
+  }
+
+  openModalViewProfile(student) {
+      this.dialog.open(ViewProfileComponent, {
+          height: '100%',
+          data: student
+      });
   }
 }

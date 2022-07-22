@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AuthenticationService } from 'src/app/main/services/authentication.service';
+import { UsersService } from 'src/app/main/services/users.service';
 
 @Component({
   selector: 'app-view-profile',
@@ -15,7 +16,7 @@ export class ViewProfileComponent implements OnInit {
 
   constructor(
       private dialogRef: MatDialogRef<ViewProfileComponent>,
-      private authenticationService: AuthenticationService,
+      private usersSerice: UsersService,
       @Optional() @Inject(MAT_DIALOG_DATA) data,
   ) { 
       this.data = data;
@@ -25,19 +26,6 @@ export class ViewProfileComponent implements OnInit {
       if(!this.data) {
           this.dialogRef.close();
       }
-
-      this.idUser = this.data.id;
-
-      this.authenticationService.getUserById(this.idUser).subscribe(
-        response => {
-            if(!response) {
-                return;
-            }
-    
-            this.infoUserDTO = response;
-            console.log(this.infoUserDTO);
-        }
-      );
   }
 
 }

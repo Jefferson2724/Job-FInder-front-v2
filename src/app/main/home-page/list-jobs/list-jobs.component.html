@@ -27,8 +27,11 @@
 
            </div>    
             <div class="job-button" *ngIf="page != 'myVacancy'">
-                <button class="btn button-pattern" (click)="openModalVacancy()">Ver mais</button>
+
+                <button *ngIf="!isStudent" class="btn button-pattern" (click)="openModalViewProfile(user)">Ver mais</button>
                 <p *ngIf="!isStudent"><span>Disponibilidade: </span>{{ user.availability }}</p>
+
+                <button *ngIf="isStudent" class="btn button-pattern" (click)="openModalVacancy(user)">Ver mais</button>
                 <p *ngIf="isStudent"><span>Disponibilidade: </span>{{ user.turn }}</p>
             </div>
             <div class="buttons-profile" *ngIf="page == 'myVacancy' && isStudent"> 
@@ -36,7 +39,7 @@
                 <div class="button-pattern no-radius">Status: Reprovado</div>
             </div>
             <div class="buttons-profile" *ngIf="page == 'myVacancy' && !isStudent">
-                <button class="btn button-pattern no-radius">Ver perfil</button>
+                <button class="btn button-pattern no-radius">Ver mais</button>
                 <button class="btn button-pattern no-radius">Enviar mensagem</button>
                 <div class="button-pattern no-radius">Status: Reprovado</div>
             </div>

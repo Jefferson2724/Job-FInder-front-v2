@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   infoUserDTO: any;
   @Input() isHomePage: boolean;
   @Input() noIsMyProfilePage: boolean;
+  isStudent: boolean;
 
   name: string = "...";
 
@@ -41,7 +42,8 @@ export class HomeComponent implements OnInit {
               this.infoCompany();
               return;
           }
-
+          
+          this.isStudent = true;
           this.name = response.name;
           this.infoUserDTO = response;
       }
@@ -55,6 +57,7 @@ export class HomeComponent implements OnInit {
               return;
           }
 
+          this.isStudent = false;
           this.name = response.companyName;
           this.infoUserDTO = response;
       }
