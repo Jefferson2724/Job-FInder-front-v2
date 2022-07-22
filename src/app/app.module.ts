@@ -25,6 +25,7 @@ import { MyVacancyComponent } from './main/profile/my-vacancy/my-vacancy.compone
 import { ViewProfileComponent } from './main/actions-user/modais/view-profile/view-profile.component';
 import { ViewInfoJobComponent } from './main/actions-user/modais/view-info-job/view-info-job.component';
 import { EditProfileComponent } from './main/actions-user/modais/edit-profile/edit-profile.component';
+import { UsersService } from './main/services/users.service';
 
 @NgModule({
   declarations: [			
@@ -59,12 +60,13 @@ import { EditProfileComponent } from './main/actions-user/modais/edit-profile/ed
     RouterModule,
     MatDialogModule
   ],
-  providers: [AuthenticationService, MessageService, CookieService],
+  providers: [AuthenticationService, MessageService, CookieService, UsersService],
   entryComponents: [
       MessageSnackbarComponent,
       ViewProfileComponent,
       ViewInfoJobComponent,
       EditProfileComponent,
+      JobRecomendationComponent
   ],
   bootstrap: [AppComponent]
 })

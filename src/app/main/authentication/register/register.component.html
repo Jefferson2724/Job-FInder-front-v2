@@ -51,6 +51,10 @@
                   <mat-label>Cargo/Periodo</mat-label>
                   <input matInput type="text" formControlName="function" placeholder="Digite seu cargo ou Periodo">
                 </mat-form-field>
+                <mat-form-field class="" appearance="fill"  *ngIf="identification != 'company'">
+                  <mat-label>Titulo</mat-label>
+                  <input matInput type="text" formControlName="title" placeholder="Ex: Desenvolvedor Web">
+                </mat-form-field>
                 <mat-form-field appearance="fill" *ngIf="identification != 'company'">
                     <mat-label>Disponibilidade</mat-label>
                     <mat-select formControlName="avaibilityForm" [(value)]="availability">

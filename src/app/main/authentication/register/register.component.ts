@@ -72,6 +72,9 @@ export class RegisterComponent implements OnInit {
         state: [
             '', [Validators.required]
         ],
+        title: [
+            '', [Validators.required]
+        ],
         password: [
             '', [Validators.required]
         ],

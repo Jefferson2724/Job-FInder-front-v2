@@ -5,6 +5,7 @@ export class Student {
     phone: number;
     identity: number; //-> identity
     age: number;
+    title: string;
     state: string;
     nationality: string;
     availability: string; //-> avaibilityForm
