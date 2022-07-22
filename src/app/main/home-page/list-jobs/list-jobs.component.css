@@ -95,7 +95,7 @@ p {
 }
 
 .no-radius {
-    width: 170px;
+    width: 190px;
     border-radius: 10px !important;
     margin-bottom: 8px;
 }
@@ -106,6 +106,6 @@ p {
 }
 
 .content-profile {
-    height: 140px;
+    height: 180px;
     background-color: white;
 }

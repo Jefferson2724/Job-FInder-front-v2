@@ -12,6 +12,7 @@ export class ViewInfoJobComponent implements OnInit {
 
   data: any;
   info: any;
+  page: string;
 
   constructor(
       private dialogRef: MatDialogRef<ViewInfoJobComponent>,
@@ -26,10 +27,14 @@ export class ViewInfoJobComponent implements OnInit {
       if(!this.data) {
           this.dialogRef.close();
       }
+
+      if(this.data.page) {
+          this.page = this.data.page;
+      }
   }
 
   applicatationVacancy() {
-      debugger;
+      
       this.data['appliedBy'] = this.data.id;
       this.data['job_id'] = this.data._id;
       this.jobService.applicateJob(this.data);

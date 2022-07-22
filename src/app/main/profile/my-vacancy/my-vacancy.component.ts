@@ -7,20 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MyVacancyComponent implements OnInit {
 
-  @Input() infoUser: any;
+  @Input() isStudent: boolean;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  isStudent() {
-    let userIsStudent: boolean = true;
-
-    if(this.infoUser == 'empresa') {
-      userIsStudent = false;
-    }
-
-    return userIsStudent;
-  }
 }

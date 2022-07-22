@@ -1,7 +1,7 @@
 <div class="container-list" [ngClass]="{'container-profile': pageIsMyVacancy}">
     <div class="content-title">
         <p class="text-title">
-            Vagas disponíveis no momento
+            {{ title }}
         </p>
     </div>
     <div class="content-list-jobs">
@@ -35,11 +35,12 @@
                 <p *ngIf="isStudent"><span>Disponibilidade: </span>{{ user.turn }}</p>
             </div>
             <div class="buttons-profile" *ngIf="page == 'myVacancy' && isStudent"> 
+                <button class="btn button-pattern no-radius" (click)="openModalVacancy(user)">Ver mais</button>
                 <button class="btn button-pattern no-radius">Enviar mensagem</button>
-                <div class="button-pattern no-radius">Status: Reprovado</div>
+                <div class="button-pattern no-radius">Status: indefinido</div>
             </div>
             <div class="buttons-profile" *ngIf="page == 'myVacancy' && !isStudent">
-                <button class="btn button-pattern no-radius">Ver mais</button>
+                <button class="btn button-pattern no-radius" (click)="openUserInVacancy(user)">Ver mais</button>
                 <button class="btn button-pattern no-radius">Enviar mensagem</button>
                 <div class="button-pattern no-radius">Status: Reprovado</div>
             </div>

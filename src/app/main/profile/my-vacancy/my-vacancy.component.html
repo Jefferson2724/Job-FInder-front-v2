@@ -1,8 +1,5 @@
 <div class="container-my-vacancy">
-    <div *ngIf="infoUser == 'aluno'">
-        <app-list-jobs [page]="'myVacancy'"></app-list-jobs>
-    </div>
-    <div *ngIf="infoUser == 'empresa'">
+    <div>
         <app-list-jobs [page]="'myVacancy'"></app-list-jobs>
     </div>
 </div>

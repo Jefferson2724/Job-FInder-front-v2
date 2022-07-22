@@ -32,6 +32,8 @@ export class ListJobsComponent implements OnInit {
   showUsers =  [];
   alreadyShowUsers = [];
 
+  title: string;
+
   constructor(
       private activatedRoute: ActivatedRoute,
       private authenticationService: AuthenticationService,
@@ -49,6 +51,21 @@ export class ListJobsComponent implements OnInit {
     this.infoUser();
   }
 
+  setTitle() {
+      if(this.isStudent && this.page == 'myVacancy') {
+        this.title = "Visualizar minhas vagas aplicadas";
+      } 
+      else if (this.isStudent) {
+        this.title = "Vagas disponíveis no momento";
+      } 
+      else if (!this.isStudent && this.page == 'myVacancy') {
+        this.title = "Visualizar minhas vagas criadas";  
+      } 
+      else {
+        this.title = "Usuários disponíveis para contato";
+      }
+  }
+
   infoUser(){
     this.authenticationService.getUserById(this.idUser).subscribe(
       response => {
@@ -63,9 +80,13 @@ export class ListJobsComponent implements OnInit {
 
           if(this.page != 'myVacancy') {
               this.getJobs();
+          } 
+          else {
+              this.getMyVacancyApplication();
           }
           
           this.infoUserDTO = response;
+          this.setTitle();
       }
     );
   }
@@ -84,6 +105,7 @@ export class ListJobsComponent implements OnInit {
           }
 
           this.infoUserDTO = response;
+          this.setTitle();
       }
     );
   }
@@ -143,17 +165,48 @@ export class ListJobsComponent implements OnInit {
   }
 
   openModalVacancy(vacancy){
-        vacancy['id'] = this.idUser;
-        this.dialog.open(ViewInfoJobComponent, {
-            height: '100%',
-            data: vacancy
-        });
+    if(this.page == 'myVacancy') {
+        vacancy['page'] = 'myVacancy';
+    }
+
+      vacancy['id'] = this.idUser;
+      this.dialog.open(ViewInfoJobComponent, {
+          height: '100%',
+          data: vacancy
+      });
   }
 
   openModalViewProfile(student) {
-        this.dialog.open(ViewProfileComponent, {
-            height: '100%',
-            data: student
-        });
+      if(this.page == 'myVacancy') {
+          student['page'] = 'myVacancy';
+      }
+
+      this.dialog.open(ViewProfileComponent, {
+          height: '100%',
+          data: student
+      });
+  }
+
+  getMyVacancyApplication() {
+      this.usersSerice.getApplicatedVacancy(this.idUser).subscribe(
+          response => {
+              if(!response) {
+                  return;
+              }
+
+              this.recomendationUsers = response;
+          });
+  }
+
+  openUserInVacancy(user) {
+    this.authenticationService.getUserById(user.appliedBy).subscribe(
+      response => {
+          if(!response) {
+              return;
+          }
+
+          this.openModalViewProfile(response);
+      }
+    );
   }
 }

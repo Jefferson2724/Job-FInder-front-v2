@@ -82,4 +82,26 @@ export class UsersService {
 
       return responseJob.asObservable();
   }
+
+  getApplicatedVacancy(id) {
+      let responseJobApplicated: BehaviorSubject<any> = new BehaviorSubject(undefined);
+      const header = { 
+          headers: new HttpHeaders({
+            'observe': 'response',
+            'Authorization': `${this.authenticationService.getToken()}`
+          })
+      }
+
+      this.httpClient.get<any>(`${this.url}/readJobApplied/${id}`, header).subscribe(
+          response => {
+              debugger;
+              responseJobApplicated.next(response);
+          },
+          error => {
+              this.messageService.showSnackbar('Erro ao recuperar vagas aplicadas!', 'snackbar-error');
+          }
+      );
+
+      return responseJobApplicated.asObservable();
+  }
 }

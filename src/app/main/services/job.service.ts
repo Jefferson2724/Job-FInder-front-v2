@@ -52,7 +52,7 @@ export class JobService {
           'Authorization': `${this.authenticationService.getToken()}`
         })
     }
-    debugger;
+    
     console.log(data);
     this.httpClient.post<any>(`${this.url}/applied`, data, header).subscribe(
         response => {

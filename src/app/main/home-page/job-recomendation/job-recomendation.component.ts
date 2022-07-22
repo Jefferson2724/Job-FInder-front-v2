@@ -126,7 +126,7 @@ export class JobRecomendationComponent implements OnInit {
   }
 
   openModalVacancy(vacancy){
-    vacancy['id'] = this.idUser;
+      vacancy['id'] = this.idUser;
       this.dialog.open(ViewInfoJobComponent, {
           height: '100%',
           data: vacancy
