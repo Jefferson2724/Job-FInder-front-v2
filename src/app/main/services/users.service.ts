@@ -94,7 +94,6 @@ export class UsersService {
 
       this.httpClient.get<any>(`${this.url}/readJobApplied/${id}`, header).subscribe(
           response => {
-              debugger;
               responseJobApplicated.next(response);
           },
           error => {

@@ -102,6 +102,9 @@ export class ListJobsComponent implements OnInit {
 
           if(this.page != 'myVacancy') {
               this.getUsers();
+          } 
+          else {
+              this.getMyVacancyApplication();
           }
 
           this.infoUserDTO = response;
